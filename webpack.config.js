@@ -10,12 +10,12 @@ module.exports = {
 	],
 	output: {
 		filename: 'main.js',
-		publicPath: '/web',
+		publicPath: '/web/',
 		path: path.resolve(__dirname, 'dist')
 	},
 	devtool: 'inline-source-map',
 	devServer: {
-		publicPath: '/web',
+		publicPath: '/web/',
 		contentBase: './dist',
 		hot: true,
 		clientLogLevel: 'error',
