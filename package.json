@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Family-TODO/web.git"
+    "url": "git+https://github.com/Family-To-Do/web.git"
   },
   "author": "Alexey Khrushch, alexeykhr@outlook.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Family-TODO/web/issues"
+    "url": "https://github.com/Family-To-Do/web/issues"
   },
-  "homepage": "https://github.com/Family-TODO/web#readme",
+  "homepage": "https://github.com/Family-To-Do/web#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "material-design-icons": "^3.0.1",
