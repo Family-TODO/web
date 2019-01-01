@@ -68,8 +68,10 @@ module.exports = {
 		})
 	],
 	resolve: {
+		extensions: ['.js', '.vue', '.json'],
 		alias: {
-			'@': path.resolve(__dirname, './src')
+			'@': path.resolve(__dirname, './src/'),
+			'@base': path.resolve(__dirname, './src/components/base/')
 		}
 	}
 }
