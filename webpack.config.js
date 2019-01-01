@@ -15,7 +15,7 @@ module.exports = {
 	},
 	devtool: 'inline-source-map',
 	devServer: {
-		publicPath: '/web/',
+		publicPath: '/',
 		contentBase: './dist',
 		hot: true,
 		clientLogLevel: 'error',
