@@ -2,7 +2,7 @@
 	<div
 		id="layout"
 		class="layout_not_authorized">
-		Not authorized
+		<RouterView />
 	</div>
 </template>
 

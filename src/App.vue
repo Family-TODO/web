@@ -18,7 +18,7 @@ export default {
 		try {
 			const user = JSON.parse(data)
 
-			this.$store.commit('SET_USER', user)
+			this.$store.commit('profile/SET_USER', user)
 			// TODO Connect to websocket
 
 		} catch (e) {
