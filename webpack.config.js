@@ -1,3 +1,5 @@
+'use strict'
+
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
@@ -15,11 +17,17 @@ module.exports = {
 	},
 	devtool: 'inline-source-map',
 	devServer: {
-		publicPath: '/web/',
+		publicPath: '/',
 		contentBase: './dist',
 		hot: true,
 		clientLogLevel: 'error',
-		disableHostCheck: true
+		disableHostCheck: true,
+		proxy: {
+			'/api/*': {
+				target: 'http://localhost:3000',
+				changeOrigin: true
+			}
+		}
 	},
 	module: {
 		rules: [
@@ -68,8 +76,10 @@ module.exports = {
 		})
 	],
 	resolve: {
+		extensions: ['.js', '.vue', '.json'],
 		alias: {
-			'@': path.resolve(__dirname, './src')
+			'@': path.resolve(__dirname, './src/'),
+			'@script': path.resolve(__dirname, './src/scripts/')
 		}
 	}
 }

@@ -5,25 +5,15 @@
 </template>
 
 <script>
-const STORE_NAME = 'user'
-
 export default {
-	beforeCreate() {
-		const data = localStorage.getItem(STORE_NAME)
-
-		if (!data) {
-			return this.$router.push({ name: 'auth' })
+	computed: {
+		user() {
+			return this.$store.state.profile.user
 		}
-
-		try {
-			const user = JSON.parse(data)
-
-			this.$store.commit('SET_USER', user)
-			// TODO Connect to websocket
-
-		} catch (e) {
-			localStorage.removeItem(STORE_NAME)
-			this.$router.push({ name: 'auth' })
+	},
+	watch: {
+		user(val) {
+			this.$router.push({ name: val ? 'dashboard' : 'auth' })
 		}
 	}
 }

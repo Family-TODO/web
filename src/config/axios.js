@@ -5,6 +5,8 @@ import store from '../store'
 import axios from 'axios'
 import Vue from 'vue'
 
+axios.defaults.baseURL = 'api'
+
 axios.interceptors.response.use(
 	(resp) => {
 		return resp
@@ -18,7 +20,15 @@ axios.interceptors.response.use(
 
 		if (response.status === 401) {
 			router.push({ name: 'dashboard' })
-			store.commit('CLEAR_USER')
+
+			// Clear data from axios
+			axios.defaults.headers['Auth'] = null
+
+			// Clear data from store
+			store.commit('profile/CLEAR_USER')
+
+			// Clear data from localStorage
+			localStorage.removeItem('token')
 			localStorage.removeItem('user')
 		}
 

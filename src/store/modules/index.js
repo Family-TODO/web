@@ -9,7 +9,10 @@ files.keys().forEach(key => {
 		return
 	}
 
-	modules[key.replace(/(\.\/|\.js)/g, '')] = files(key).default
+	const mod = files(key).default
+	mod.namespaced = true
+
+	modules[key.replace(/(\.\/|\.js)/g, '')] = mod
 })
 
 export default modules
