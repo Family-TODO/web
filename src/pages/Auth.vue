@@ -4,7 +4,10 @@
 		class="page"
 	>
 		<BaseInput v-model="form.login.value" />
-		<BaseInput v-model="form.password.value" type="password" />
+		<BaseInput
+			v-model="form.password.value"
+			type="password"
+		/>
 		<BaseButton @click="onClick" />
 		{{ form }}
 		Auth page
@@ -42,6 +45,23 @@ export default {
 			}
 		}
 	},
+	computed: {
+		user() {
+			return this.$store.state.profile.user
+		}
+	},
+	watch: {
+		user(val) {
+			if (val) {
+				this.$router.push({ name: 'dashboard' })
+			}
+		}
+	},
+	created() {
+		if (this.user) {
+			this.$router.push({ name: 'dashboard' })
+		}
+	},
 	methods: {
 		onClick() {
 			const validate = new ValidateForm(this.form)
@@ -54,8 +74,7 @@ export default {
 			fd.set('login', this.form.login.value)
 			fd.set('password', this.form.password.value)
 
-			// TODO Store Token
-			this.$axios.post('auth', fd)
+			this.$store.dispatch('profile/auth', fd)
 		}
 	}
 }
