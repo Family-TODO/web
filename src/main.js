@@ -23,6 +23,11 @@ baseComponents.forEach(component => {
 	Vue.component(component.name, component)
 })
 
+// Set user from localStorage
+store.dispatch('profile/init')
+
+// TODO Connect to websocket??
+
 new Vue({
 	el: '#app',
 	store,

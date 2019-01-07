@@ -45,23 +45,6 @@ export default {
 			}
 		}
 	},
-	computed: {
-		user() {
-			return this.$store.state.profile.user
-		}
-	},
-	watch: {
-		user(val) {
-			if (val) {
-				this.$router.push({ name: 'dashboard' })
-			}
-		}
-	},
-	created() {
-		if (this.user) {
-			this.$router.push({ name: 'dashboard' })
-		}
-	},
 	methods: {
 		onClick() {
 			const validate = new ValidateForm(this.form)

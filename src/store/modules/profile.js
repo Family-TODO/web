@@ -1,6 +1,11 @@
 'use strict'
 
+import router from '@/router'
 import axios from 'axios'
+
+// localStorage
+const STORE_TOKEN = 'token'
+const STORE_USER = 'user'
 
 const state = {
 	user: null
@@ -17,9 +22,28 @@ const mutations = {
 
 const actions = {
 	/**
-	 * @param dispatch
-	 * @param {Object} data - login, password
+	 * Get data from localStorage and set init config.
 	 */
+	init({ commit }) {
+		const storageUserData = localStorage.getItem(STORE_USER)
+		const token = localStorage.getItem(STORE_TOKEN)
+
+		if (!storageUserData || !token) {
+			return router.push({ name: 'auth' })
+		}
+
+		try {
+			const user = JSON.parse(storageUserData)
+
+			axios.defaults.headers['Auth'] = token
+			commit('SET_USER', user)
+
+		} catch (e) {
+			localStorage.removeItem(STORE_USER)
+			localStorage.removeItem(STORE_TOKEN)
+			router.push({ name: 'auth' })
+		}
+	},
 	auth({ dispatch }, data) {
 		axios.post('auth', data)
 			.then(res => {
@@ -27,7 +51,7 @@ const actions = {
 
 				if (data && data.token) {
 					axios.defaults.headers['Auth'] = data.token
-					localStorage.setItem('token', data.token)
+					localStorage.setItem(STORE_TOKEN, data.token)
 					dispatch('getUser')
 				}
 			})
@@ -36,7 +60,7 @@ const actions = {
 		axios.get('auth/me')
 			.then(res => {
 				if (res.data && res.data.user) {
-					localStorage.setItem('user', JSON.stringify(res.data.user))
+					localStorage.setItem(STORE_USER, JSON.stringify(res.data.user))
 					commit('SET_USER', res.data.user)
 				}
 			})
