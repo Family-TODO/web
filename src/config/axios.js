@@ -5,6 +5,8 @@ import store from '../store'
 import axios from 'axios'
 import Vue from 'vue'
 
+axios.defaults.baseURL = 'api'
+
 axios.interceptors.response.use(
 	(resp) => {
 		return resp
