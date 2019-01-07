@@ -9,14 +9,14 @@ const STORE_NAME = 'user'
 
 export default {
 	beforeCreate() {
-		const data = localStorage.getItem(STORE_NAME)
+		const storageUserData = localStorage.getItem(STORE_NAME)
 
-		if (!data) {
+		if (!storageUserData) {
 			return this.$router.push({ name: 'auth' })
 		}
 
 		try {
-			const user = JSON.parse(data)
+			const user = JSON.parse(storageUserData)
 
 			this.$store.commit('profile/SET_USER', user)
 			// TODO Connect to websocket

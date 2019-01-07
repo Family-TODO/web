@@ -1,3 +1,5 @@
+'use strict'
+
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
@@ -70,8 +72,7 @@ module.exports = {
 	resolve: {
 		extensions: ['.js', '.vue', '.json'],
 		alias: {
-			'@': path.resolve(__dirname, './src/'),
-			'@base': path.resolve(__dirname, './src/components/base/')
+			'@': path.resolve(__dirname, './src/')
 		}
 	}
 }
