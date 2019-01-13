@@ -1,5 +1,6 @@
 <template>
 	<transition-group
+		tag="div"
 		name="groups-animate"
 		class="groups"
 		appear
@@ -20,29 +21,9 @@ export default {
 	components: {
 		GroupItem
 	},
-	props: {
-		params: {
-			type: Object,
-			default: () => {}
-		}
-	},
 	computed: {
 		groups() {
 			return this.$store.state.groups.list
-		}
-	},
-	mounted() {
-		if (!this.groups.length) {
-			this.$store.dispatch('groups/fetchList', this.params)
-		}
-		window.addEventListener('scroll', this.onScroll)
-	},
-	beforeDestroy() {
-		window.removeEventListener('scroll', this.onScroll)
-	},
-	methods: {
-		onScroll() {
-			console.log('Scroll')
 		}
 	}
 }

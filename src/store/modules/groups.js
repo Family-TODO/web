@@ -15,6 +15,8 @@ const mutations = {
 
 const actions = {
 	fetchList({ commit }, params) {
+		commit('CLEAR_GROUPS')
+
 		axios.get('groups', {
 			params
 		})

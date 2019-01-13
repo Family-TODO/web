@@ -6,33 +6,28 @@
 	>
 		<header class="top-bar">
 			<div
+				v-if="!leftDisable"
 				class="top-bar__left"
 				@click="onClickLeft"
 			>
-				<i
-					v-if="isHomePage"
-					class="material-icons"
-				>
-					keyboard_arrow_left
-				</i>
-				<i
-					v-else
-					class="material-icons"
-				>
-					settings
-				</i>
+				<slot name="left">
+					<i class="material-icons">{{ leftIcon }}</i>
+				</slot>
 			</div>
 			<div class="top-bar__center">
-				<slot><span>{{ title || 'Home page' }}</span></slot>
+				<slot>
+					<span>{{ title || 'Home page' }}</span>
+				</slot>
 			</div>
-			<div
-				class="top-bar__right"
-				@click="onClickRight"
-			>
-				<i class="material-icons">
-					search
-				</i>
-			</div>
+				<div
+					v-if="!rightDisable"
+					class="top-bar__right"
+					@click="onRightClick"
+				>
+					<slot name="right">
+						<i class="material-icons">{{ rightIcon }}</i>
+					</slot>
+				</div>
 		</header>
 	</transition>
 </template>
@@ -44,28 +39,43 @@ export default {
 			type: String,
 			default: ''
 		},
-		backRouteName: {
-			type: String,
-			default: 'dashboard'
-		}
-	},
-	data() {
-		return {}
-	},
-	computed: {
-		hasDefaultSlot() {
-			return !!this.$slots.default
+		leftDisable: {
+			type: Boolean,
+			default: false
 		},
-		isHomePage() {
-			return this.hasDefaultSlot || !!this.title
+		leftIcon: {
+			type: String,
+			default: 'keyboard_arrow_left'
+		},
+		leftClick: {
+			type: Function,
+			default: null
+		},
+		rightDisable: {
+			type: Boolean,
+			default: false
+		},
+		rightIcon: {
+			type: String,
+			default: 'refresh'
+		},
+		rightClick: {
+			type: Function,
+			default: null
 		}
 	},
 	methods: {
-		onClickLeft() {
-			this.$router.push({ name: this.isHomePage ? this.backRouteName : 'settings' })
-		},
-		onClickRight() {
+		onClickLeft(evt) {
+			if (this.leftClick) {
+				this.leftClick(evt)
+			} else {
+				this.$router.push({ name: 'dashboard' })
+			}
 
+			this.$emit('left', evt)
+		},
+		onRightClick(evt) {
+			this.$emit('right', evt)
 		}
 	}
 }

@@ -3,7 +3,7 @@
 		id="profile"
 		class="page page_user"
 	>
-		<top-bar title="Profile" />
+		<TopBar title="Profile" />
 		<main>
 			{{ user }}
 		</main>

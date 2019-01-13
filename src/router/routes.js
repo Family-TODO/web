@@ -29,9 +29,14 @@ const authorizedRoutes = {
 			component: loadPage('Profile')
 		},
 		{
-			path: '/tasks',
+			path: '/tasks/:group',
 			name: 'tasks',
 			component: loadPage('Tasks')
+		},
+		{
+			path: '/settings',
+			name: 'settings',
+			component: loadPage('Settings')
 		},
 		{
 			path: '*',

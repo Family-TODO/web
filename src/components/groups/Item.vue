@@ -1,6 +1,6 @@
 <template>
 	<article class="group">
-		<router-link :to="{ name: 'dashboard' }">
+		<router-link :to="{ name: 'tasks', params: { group: group.id } }">
 			<header class="group__header">
 				<div class="group__header-name">
 					<span>{{ group.name }}</span>

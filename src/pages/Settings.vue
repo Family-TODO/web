@@ -1,12 +1,13 @@
 <template>
 	<div
-		id="tasks"
+		id="settings"
 		class="page"
 	>
-		<!--TODO Group name-->
-		<TopBar title="Tasks" />
+		<TopBar title="Settings" />
 		<main>
-			<Tasks />
+			Settings
+			<!--TODO profile section-->
+			<!--TODO list of users-->
 		</main>
 	</div>
 </template>
