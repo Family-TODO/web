@@ -1,0 +1,17 @@
+.groups {
+  //background: linear-gradient(#38517a, #3f5e7a);
+}
+
+.group {
+  //background: #53517a;
+  margin: 10px 0;
+  background: rgba(0, 0, 0, .2);
+  padding: 10px 20px;
+  border-radius: 5px;
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

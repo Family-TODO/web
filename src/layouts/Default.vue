@@ -3,7 +3,6 @@
 		id="layout"
 		class="layout_default"
 	>
-		User: {{ user }}
 		<RouterView />
 	</div>
 </template>

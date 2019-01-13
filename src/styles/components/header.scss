@@ -1,0 +1,48 @@
+$height: 45px;
+
+.header {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $height;
+  padding: 5px 0;
+  background-color: rgba(0, 0, 0, .2);
+  box-shadow: 0 0 2px 1px #222;
+  + main {
+    padding-top: $height + 10px;
+  }
+}
+
+.header__left, .header__right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 100%;
+  line-height: 0;
+  cursor: pointer;
+  user-select: none;
+  > i {
+    font-size: 20px;
+  }
+}
+
+.header__left {
+  margin-left: 5px;
+}
+
+.header__center {
+  flex: 1;
+  flex-basis: auto;
+  padding: 0 10px;
+  > span {
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+}
+
+.header__right {
+  margin-right: 5px;
+}

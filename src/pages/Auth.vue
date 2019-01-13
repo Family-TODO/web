@@ -1,5 +1,5 @@
 <template>
-	<div
+	<main
 		id="auth"
 		class="page"
 	>
@@ -11,7 +11,7 @@
 		<BaseButton @click="onClick" />
 		{{ form }}
 		Auth page
-	</div>
+	</main>
 </template>
 
 <script>

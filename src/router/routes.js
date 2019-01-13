@@ -3,12 +3,12 @@
 import { loadPage, loadLayout } from './helper'
 
 const notAuthorizedRoutes = {
-	path: '',
+	path: '/auth',
 	name: 'layout-not-authorized',
 	component: loadLayout('NotAuthorized'),
 	children: [
 		{
-			path: '/auth',
+			path: '/',
 			name: 'auth',
 			component: loadPage('Auth')
 		}
@@ -24,6 +24,16 @@ const authorizedRoutes = {
 			path: '/dashboard',
 			name: 'dashboard',
 			component: loadPage('Dashboard')
+		},
+		{
+			path: '/profile',
+			name: 'profile',
+			component: loadPage('Profile')
+		},
+		{
+			path: '*',
+			name: 'not-found',
+			component: loadPage('NotFound')
 		}
 	]
 }
