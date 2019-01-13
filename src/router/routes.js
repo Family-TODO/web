@@ -29,8 +29,8 @@ const authorizedRoutes = {
 			component: loadPage('Profile')
 		},
 		{
-			path: '/',
-			name: '',
+			path: '/tasks',
+			name: 'tasks',
 			component: loadPage('Tasks')
 		},
 		{

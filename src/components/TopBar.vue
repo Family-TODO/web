@@ -1,23 +1,37 @@
 <template>
-	<transition name="top-bar-animate" :duration="250" appear>
+	<transition
+		name="top-bar-animate"
+		:duration="400"
+		appear
+	>
 		<header class="top-bar">
 			<div
 				class="top-bar__left"
-				@click="onClickLeft">
+				@click="onClickLeft"
+			>
 				<i
 					v-if="isHomePage"
-					class="material-icons">keyboard_arrow_left</i>
+					class="material-icons"
+				>
+					keyboard_arrow_left
+				</i>
 				<i
 					v-else
-					class="material-icons">face</i>
+					class="material-icons"
+				>
+					settings
+				</i>
 			</div>
 			<div class="top-bar__center">
 				<slot><span>{{ title || 'Home page' }}</span></slot>
 			</div>
 			<div
 				class="top-bar__right"
-				@click="onClickRight">
-				<i class="material-icons">search</i>
+				@click="onClickRight"
+			>
+				<i class="material-icons">
+					search
+				</i>
 			</div>
 		</header>
 	</transition>
@@ -48,7 +62,7 @@ export default {
 	},
 	methods: {
 		onClickLeft() {
-			this.$router.push({ name: this.isHomePage ? this.backRouteName : 'profile' })
+			this.$router.push({ name: this.isHomePage ? this.backRouteName : 'settings' })
 		},
 		onClickRight() {
 

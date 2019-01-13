@@ -1,10 +1,15 @@
 <template>
-	<transition-group name="groups-animate" class="groups">
+	<transition-group
+		name="groups-animate"
+		class="groups"
+		appear
+	>
 		<!--TODO Pagination-->
-		<group-item
+		<GroupItem
 			v-for="group in groups"
 			:key="group.id"
-			:group="group" />
+			:group="group"
+		/>
 	</transition-group>
 </template>
 
@@ -21,25 +26,23 @@ export default {
 			default: () => {}
 		}
 	},
-	data() {
-		return {
-			groups: {}
+	computed: {
+		groups() {
+			return this.$store.state.groups.list
 		}
 	},
 	mounted() {
-		// TODO Store
-		this.get()
+		if (!this.groups.length) {
+			this.$store.dispatch('groups/fetchList', this.params)
+		}
+		window.addEventListener('scroll', this.onScroll)
+	},
+	beforeDestroy() {
+		window.removeEventListener('scroll', this.onScroll)
 	},
 	methods: {
-		get() {
-			this.groups = {}
-
-			this.$axios.get('groups', {
-				params: this.params
-			})
-				.then(res => {
-					this.groups = res.data.groups
-				})
+		onScroll() {
+			console.log('Scroll')
 		}
 	}
 }

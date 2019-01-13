@@ -1,6 +1,9 @@
 <template>
-	<div id="tasks" class="page">
-
+	<div
+		id="tasks"
+		class="page"
+	>
+		Tasks
 	</div>
 </template>
 
@@ -8,7 +11,7 @@
 export default {
 	data() {
 		return {
-			group: {}
+			tasks: {}
 		}
 	}
 }

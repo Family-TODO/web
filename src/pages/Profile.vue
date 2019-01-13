@@ -1,7 +1,8 @@
 <template>
 	<div
 		id="profile"
-		class="page page_user">
+		class="page page_user"
+	>
 		<top-bar title="Profile" />
 		<main>
 			{{ user }}
