@@ -1,29 +1,35 @@
 <template>
-	<header class="header">
-		<div
-			class="header__left"
-			@click="onClickLeft">
-			<i
-				v-if="hasDefaultSlot"
-				class="material-icons">keyboard_arrow_left</i>
-			<i
-				v-else
-				class="material-icons">face</i>
-		</div>
-		<div class="header__center">
-			<slot><span>Home page</span></slot>
-		</div>
-		<div
-			class="header__right"
-			@click="onClickRight">
-			<i class="material-icons">search</i>
-		</div>
-	</header>
+	<transition name="top-bar-animate" :duration="250" appear>
+		<header class="top-bar">
+			<div
+				class="top-bar__left"
+				@click="onClickLeft">
+				<i
+					v-if="isHomePage"
+					class="material-icons">keyboard_arrow_left</i>
+				<i
+					v-else
+					class="material-icons">face</i>
+			</div>
+			<div class="top-bar__center">
+				<slot><span>{{ title || 'Home page' }}</span></slot>
+			</div>
+			<div
+				class="top-bar__right"
+				@click="onClickRight">
+				<i class="material-icons">search</i>
+			</div>
+		</header>
+	</transition>
 </template>
 
 <script>
 export default {
 	props: {
+		title: {
+			type: String,
+			default: ''
+		},
 		backRouteName: {
 			type: String,
 			default: 'dashboard'
@@ -35,11 +41,14 @@ export default {
 	computed: {
 		hasDefaultSlot() {
 			return !!this.$slots.default
+		},
+		isHomePage() {
+			return this.hasDefaultSlot || !!this.title
 		}
 	},
 	methods: {
 		onClickLeft() {
-			this.$router.push({ name: this.hasDefaultSlot ? this.backRouteName : 'profile' })
+			this.$router.push({ name: this.isHomePage ? this.backRouteName : 'profile' })
 		},
 		onClickRight() {
 

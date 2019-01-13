@@ -1,22 +1,26 @@
 <template>
-	<div class="groups">
-		<!--TODO router-link-->
-		<article
-			v-for="(group, index) in groups"
-			:key="index"
-			class="group">
-			<header class="group__header">
-				<div class="group-name">{{ group.name }}</div>
-			</header>
-			<footer class="group__footer">
-
-			</footer>
-		</article>
-	</div>
+	<transition-group name="groups-animate" class="groups">
+		<!--TODO Pagination-->
+		<group-item
+			v-for="group in groups"
+			:key="group.id"
+			:group="group" />
+	</transition-group>
 </template>
 
 <script>
+import GroupItem from './Item'
+
 export default {
+	components: {
+		GroupItem
+	},
+	props: {
+		params: {
+			type: Object,
+			default: () => {}
+		}
+	},
 	data() {
 		return {
 			groups: {}
@@ -24,10 +28,19 @@ export default {
 	},
 	mounted() {
 		// TODO Store
-		this.$axios.get('groups')
-			.then(res => {
-				this.groups = res.data.groups
+		this.get()
+	},
+	methods: {
+		get() {
+			this.groups = {}
+
+			this.$axios.get('groups', {
+				params: this.params
 			})
+				.then(res => {
+					this.groups = res.data.groups
+				})
+		}
 	}
 }
 </script>

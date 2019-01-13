@@ -2,7 +2,7 @@
 	<div
 		id="profile"
 		class="page page_user">
-		<top-bar>Profile</top-bar>
+		<top-bar title="Profile" />
 		<main>
 			{{ user }}
 		</main>

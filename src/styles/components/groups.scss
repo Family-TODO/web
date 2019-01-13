@@ -1,17 +1,53 @@
 .groups {
-  //background: linear-gradient(#38517a, #3f5e7a);
+
 }
 
 .group {
-  //background: #53517a;
   margin: 10px 0;
   background: rgba(0, 0, 0, .2);
-  padding: 10px 20px;
   border-radius: 5px;
+  font-size: .9rem;
+  > a {
+    display: block;
+    padding: 10px 20px;
+  }
   &:first-child {
     margin-top: 0;
   }
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+.group-name {
+  display: flex;
+  font-weight: 600;
+  > span {
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+  }
+  > i {
+    width: 10px;
+    font-size: .6rem;
+    margin-left: 5px;
+  }
+}
+
+// <transition>
+
+.groups-animate-enter {
+  opacity: .3;
+  transform: scale(.95);
+}
+
+.groups-animate-enter-active {
+  transition: all .3s ease;
+}
+
+.groups-animate-enter-to {
+  opacity: 1;
+  transform: scale(1);
 }

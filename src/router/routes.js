@@ -4,7 +4,6 @@ import { loadPage, loadLayout } from './helper'
 
 const notAuthorizedRoutes = {
 	path: '/auth',
-	name: 'layout-not-authorized',
 	component: loadLayout('NotAuthorized'),
 	children: [
 		{
@@ -17,7 +16,6 @@ const notAuthorizedRoutes = {
 
 const authorizedRoutes = {
 	path: '',
-	name: 'layout-default',
 	component: loadLayout('Default'),
 	children: [
 		{
@@ -29,6 +27,11 @@ const authorizedRoutes = {
 			path: '/profile',
 			name: 'profile',
 			component: loadPage('Profile')
+		},
+		{
+			path: '/',
+			name: '',
+			component: loadPage('Tasks')
 		},
 		{
 			path: '*',

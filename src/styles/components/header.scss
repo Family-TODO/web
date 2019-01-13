@@ -1,21 +1,14 @@
-$height: 45px;
-
-.header {
-  position: fixed;
-  width: 100%;
+.top-bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: $height;
+  height: 45px;
   padding: 5px 0;
   background-color: rgba(0, 0, 0, .2);
   box-shadow: 0 0 2px 1px #222;
-  + main {
-    padding-top: $height + 10px;
-  }
 }
 
-.header__left, .header__right {
+.top-bar__left, .top-bar__right {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,11 +22,11 @@ $height: 45px;
   }
 }
 
-.header__left {
+.top-bar__left {
   margin-left: 5px;
 }
 
-.header__center {
+.top-bar__center {
   flex: 1;
   flex-basis: auto;
   padding: 0 10px;
@@ -43,6 +36,23 @@ $height: 45px;
   }
 }
 
-.header__right {
+.top-bar__right {
   margin-right: 5px;
+}
+
+// <transition>
+
+.top-bar-animate-enter-active {
+  .top-bar__center {
+    transform: translate3d(-10px, 0, 0);
+    opacity: .3;
+    transition: .3s;
+  }
+}
+
+.top-bar-animate-enter-to {
+  .top-bar__center {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
