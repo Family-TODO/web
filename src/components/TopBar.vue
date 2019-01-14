@@ -11,7 +11,7 @@
 				@click="onClickLeft"
 			>
 				<slot name="left">
-					<i class="material-icons">{{ leftIcon }}</i>
+					<BaseIcon :name="leftIcon" />
 				</slot>
 			</div>
 			<div class="top-bar__center">
@@ -25,7 +25,7 @@
 					@click="onRightClick"
 				>
 					<slot name="right">
-						<i class="material-icons">{{ rightIcon }}</i>
+						<BaseIcon :name="rightIcon" />
 					</slot>
 				</div>
 		</header>
