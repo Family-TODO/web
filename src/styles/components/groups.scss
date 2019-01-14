@@ -4,8 +4,8 @@
   font-size: .9rem;
   > a {
     display: block;
-    padding: 10px 20px;
-    border-bottom: 1px solid rgba(0,0,0,.2);
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
   }
   &:first-child {
     margin-top: 0;
@@ -35,11 +35,6 @@
     text-overflow: ellipsis;
     display: -webkit-box;
   }
-  > i {
-    width: 10px;
-    font-size: .6rem;
-    margin-left: 3px;
-  }
 }
 
 .group__header-time {
@@ -56,6 +51,10 @@
   margin-top: 5px;
   color: #a6a6a6;
   font-size: .8rem;
+  > i {
+    font-size: .6rem;
+    margin-left: 3px;
+  }
 }
 
 .group__footer-task {
