@@ -8,8 +8,13 @@
 			left-icon="settings"
 			@right="fetchGroups" />
 		<main>
-			<!--TODO Loading-->
 			<Groups />
+			<BaseLoading v-if="loading" />
+			<BaseButton
+				icon
+				@click="onClickCreate">
+				<BaseIcon name="add" />
+			</BaseButton>
 		</main>
 	</div>
 </template>
@@ -25,6 +30,9 @@ export default {
 	computed: {
 		groups() {
 			return this.$store.state.groups.list
+		},
+		loading() {
+			return this.$store.state.groups.loading
 		}
 	},
 	mounted() {
@@ -38,6 +46,9 @@ export default {
 		},
 		onClickLeft() {
 			this.$router.push({ name: 'settings' })
+		},
+		onClickCreate() {
+			// TODO
 		}
 	}
 }

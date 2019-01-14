@@ -22,6 +22,10 @@
 					v-if="group.creator_id === user.id"
 					name="star"
 					class="color_yellow" />
+				<div class="group__footer-users">
+					<span>{{ group.users.length }}</span>
+					<BaseIcon name="people" />
+				</div>
 			</footer>
 		</router-link>
 	</article>

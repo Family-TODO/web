@@ -48,12 +48,26 @@
 .group__footer {
   display: flex;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 8px;
   color: #a6a6a6;
   font-size: .8rem;
-  > i {
+  line-height: 1;
+  > .base-checkbox {
     font-size: .6rem;
     margin-left: 3px;
+  }
+  > .base-icon {
+    font-size: .6rem;
+  }
+}
+
+.group__footer-users {
+  display: flex;
+  align-items: center;
+  font-size: .6rem;
+  margin-left: 5px;
+  > .base-icon {
+    margin: 2px 0 0 2px;
   }
 }
 
