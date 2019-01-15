@@ -3,6 +3,7 @@
 		id="auth"
 		class="page"
 	>
+		<Logo />
 		<BaseForm @submit="onSubmit">
 			<BaseInput v-model="form.login.value" />
 			<BaseInput
@@ -16,8 +17,12 @@
 
 <script>
 import ValidateForm from '@script/ValidateForm'
+import Logo from '@/components/Logo'
 
 export default {
+	components: {
+		Logo
+	},
 	data() {
 		return {
 			loading: false,
@@ -40,7 +45,8 @@ export default {
 						text: ''
 					},
 					validation: [
-						v => !!v || 'Password is empty'
+						v => !!v || 'Password is empty',
+						v => v.length > 5 || 'Min length is 6'
 					]
 				}
 			}
@@ -48,9 +54,11 @@ export default {
 	},
 	methods: {
 		onSubmit() {
+			// TODO Loading
 			const validate = new ValidateForm(this.form)
 
 			if (!validate.result) {
+				// TODO Show error
 				return
 			}
 
@@ -58,6 +66,7 @@ export default {
 			fd.set('login', this.form.login.value)
 			fd.set('password', this.form.password.value)
 
+			// TODO Success message
 			this.$store.dispatch('profile/auth', fd)
 		}
 	}
