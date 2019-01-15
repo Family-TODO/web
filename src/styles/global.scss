@@ -5,9 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
-  background-repeat: no-repeat;
-  min-height: 100vh;
+  background: #2c2c2c; // FIXME image*
   color: #eceaef;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -21,4 +19,23 @@ main {
 a {
   color: #eceaef;
   text-decoration: none !important;
+}
+
+#app {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+}
+
+//TODO Desktop design? Font-size, etc
+
+@media only screen and (min-width: 600px) and (min-height: 600px) {
+  body {
+    margin: 50px 0;
+  }
+
+  main {
+    height: calc(100vh - 145px);
+  }
 }

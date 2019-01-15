@@ -27,7 +27,6 @@ export default {
 				.then(res => {
 					this.$store.commit('groups/APPEND_GROUP', res.data.group)
 					this.$router.push({ name: 'dashboard' })
-					console.log(res)
 				})
 		}
 	}

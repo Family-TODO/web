@@ -9,10 +9,10 @@
 					{{ time }}
 				</div>
 			</header>
-			<footer
-				v-if="lastTask"
-				class="group__footer">
-				<div class="group__footer-task">
+			<footer class="group__footer">
+				<div
+					class="group__footer-task"
+					v-if="lastTask">
 					<BaseCheckbox
 						:value="lastTask.is_done"
 						only-view />
