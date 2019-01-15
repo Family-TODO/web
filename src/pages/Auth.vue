@@ -3,14 +3,14 @@
 		id="auth"
 		class="page"
 	>
-		<BaseInput v-model="form.login.value" />
-		<BaseInput
-			v-model="form.password.value"
-			type="password"
-		/>
-		<BaseButton @click="onClick">Login</BaseButton>
-		{{ form }}
-		Auth page
+		<BaseForm @submit="onSubmit">
+			<BaseInput v-model="form.login.value" />
+			<BaseInput
+				v-model="form.password.value"
+				type="password"
+			/>
+			<BaseButton>Login</BaseButton>
+		</BaseForm>
 	</main>
 </template>
 
@@ -20,6 +20,7 @@ import ValidateForm from '@script/ValidateForm'
 export default {
 	data() {
 		return {
+			loading: false,
 			form: {
 				login: {
 					value: 'admin',
@@ -46,7 +47,7 @@ export default {
 		}
 	},
 	methods: {
-		onClick() {
+		onSubmit() {
 			const validate = new ValidateForm(this.form)
 
 			if (!validate.result) {
