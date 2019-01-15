@@ -8,7 +8,7 @@
 			v-model="form.password.value"
 			type="password"
 		/>
-		<BaseButton @click="onClick" />
+		<BaseButton @click="onClick">Login</BaseButton>
 		{{ form }}
 		Auth page
 	</main>

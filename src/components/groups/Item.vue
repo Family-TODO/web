@@ -44,7 +44,11 @@ export default {
 			return this.$store.state.profile.user
 		},
 		lastTask() {
-			return this.group.tasks.length ? this.group.tasks[0] : null
+			if (!this.group.tasks || !this.group.tasks.length) {
+				return null
+			}
+
+			return this.group.tasks[0]
 		},
 		time() {
 			const date = this.group.updated_at

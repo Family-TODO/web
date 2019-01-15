@@ -9,6 +9,9 @@ const mutations = {
 	SET_GROUPS(state, arr) {
 		state.list = arr
 	},
+	APPEND_GROUP(state, obj) {
+		state.list.unshift(obj)
+	},
 	SET_LOADING(state, toggle) {
 		state.loading = toggle
 	}
