@@ -24,6 +24,11 @@ const authorizedRoutes = {
 			component: loadPage('Dashboard')
 		},
 		{
+			path: '/groups/create',
+			name: 'groups-create',
+			component: loadPage('GroupCreate')
+		},
+		{
 			path: '/profile',
 			name: 'profile',
 			component: loadPage('Profile')

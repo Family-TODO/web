@@ -5,7 +5,10 @@ import router from './router'
 import store from '@/store'
 
 router.beforeEach((to, from, next) => {
-	if (to.name === 'auth' && store.state.profile.user) {
+	if (to.path === '/') {
+		next({ name: 'dashboard' })
+	}
+	else if (to.name === 'auth' && store.state.profile.user) {
 		next({ name: 'dashboard' })
 	}
 	else if (!notAuthorizedRoutesName.includes(to.name) && !store.state.profile.user) {

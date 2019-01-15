@@ -47,7 +47,7 @@ export default {
 			return this.group.tasks.length ? this.group.tasks[0] : null
 		},
 		time() {
-			const date = this.group.updated_at || this.group.created_at
+			const date = this.group.updated_at
 			const now = new Date
 
 			// TODO Calculate date (hour:minute or Day of week or day.month or year

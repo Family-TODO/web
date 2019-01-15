@@ -48,7 +48,7 @@ export default {
 			this.$router.push({ name: 'settings' })
 		},
 		onClickCreate() {
-			// TODO
+			this.$router.push({ name: 'groups-create' })
 		}
 	}
 }
