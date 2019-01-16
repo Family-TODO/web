@@ -1,5 +1,6 @@
 'use strict'
 
+import '@babel/polyfill'
 import baseComponents from '@/components/base'
 import router from '@/router'
 import App from '@/App.vue'
