@@ -8,6 +8,7 @@ const STORE_TOKEN = 'token'
 const STORE_USER = 'user'
 
 const state = {
+	loading: false,
 	user: null
 }
 
@@ -17,6 +18,9 @@ const mutations = {
 	},
 	CLEAR_USER(state) {
 		state.user = null
+	},
+	SET_LOADING(state, toggle) {
+		state.loading = toggle
 	}
 }
 
@@ -44,17 +48,23 @@ const actions = {
 			router.push({ name: 'auth' })
 		}
 	},
-	auth({ dispatch }, data) {
+	auth({ dispatch, commit }, data) {
+		commit('SET_LOADING', true)
+
 		axios.post('auth', data)
-			.then(res => {
+			.then(async res => {
 				const data = res.data
 
 				if (data && data.token) {
 					axios.defaults.headers['Auth'] = data.token
 					localStorage.setItem(STORE_TOKEN, data.token)
-					dispatch('getUser')
+					await dispatch('getUser')
 				}
+
+				// TODO Success message (notification)
+				commit('SET_LOADING', false)
 			})
+			.catch(() => commit('SET_LOADING', false))
 	},
 	getUser({ commit }) {
 		axios.get('auth/me')

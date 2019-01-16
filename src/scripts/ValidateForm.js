@@ -84,4 +84,15 @@ export default class ValidateForm {
 	get result() {
 		return this._result
 	}
+
+	/** @return {FormData} */
+	get formData() {
+		const fd = new FormData
+
+		Object.entries(this._form).map(([key, item]) => {
+			fd.set(key, item.value)
+		})
+
+		return fd
+	}
 }
