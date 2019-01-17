@@ -1,5 +1,6 @@
 'use strict'
 
+import { notification } from '@/prototypes/notification'
 import router from '@/router'
 import axios from 'axios'
 
@@ -59,12 +60,16 @@ const actions = {
 					axios.defaults.headers['Auth'] = data.token
 					localStorage.setItem(STORE_TOKEN, data.token)
 					await dispatch('getUser')
+				} else {
+					notification.error(res.data.error)
 				}
 
-				// TODO Success message (notification)
 				commit('SET_LOADING', false)
 			})
-			.catch(() => commit('SET_LOADING', false))
+			.catch(() => {
+				notification.error('The server returned an error')
+				commit('SET_LOADING', false)
+			})
 	},
 	getUser({ commit }) {
 		axios.get('auth/me')

@@ -64,7 +64,7 @@ export default {
 			const validate = new ValidateForm(this.form)
 
 			if (!validate.result) {
-				// TODO Show error (notification)
+				this.$notification.error('Validation of form has errors')
 				return
 			}
 

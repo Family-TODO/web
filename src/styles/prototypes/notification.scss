@@ -1,0 +1,32 @@
+.base-notification {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate3D(-50%, -10px, 0);
+  padding: 4px 15px 4px 10px;
+  min-width: 100px;
+  background: rgba(0, 0, 0, .8);
+  border-radius: 10px;
+  opacity: .5;
+  font-size: .8rem;
+  font-weight: 600;
+  transition: .3s;
+  pointer-events: none;
+  will-change: transform;
+  &.active {
+    opacity: 1;
+    transform: translate3d(-50%, calc(100% + 10px), 0);
+  }
+  &.success {
+    color: #4db871;
+  }
+  &.error {
+    color: #b84d4d;
+  }
+  > .base-icon {
+    margin-right: 5px;
+  }
+}

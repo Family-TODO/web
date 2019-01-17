@@ -3,7 +3,6 @@
 import router from '../router'
 import store from '../store'
 import axios from 'axios'
-import Vue from 'vue'
 
 // http(s)://example.com/api/*
 axios.defaults.baseURL = 'api'
@@ -41,4 +40,4 @@ axios.interceptors.response.use(
 	}
 )
 
-Vue.prototype.$axios = axios
+export default (Vue) => Vue.prototype.$axios = axios
