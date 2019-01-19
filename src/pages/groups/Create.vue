@@ -1,17 +1,33 @@
 <template>
 	<div class="page">
-		<BaseForm @submit="onSubmit">
-			<BaseInput v-model="form.name.value" />
-			<BaseTextarea v-model="form.description.value" />
-			<BaseButton :loading="loading">Create</BaseButton>
-		</BaseForm>
+		<TopBar
+			title="Create a group"
+			left-icon="settings"
+			:left-click="onClickLeft"
+			:loading="loading"
+			right-disable />
+		<main>
+			<BaseForm
+				@submit="onSubmit"
+				:loading="loading">
+				<BaseInput
+					v-model="form.name.value"
+					autofocus />
+				<BaseTextarea v-model="form.description.value" />
+				<BaseButton :loading="loading">Create</BaseButton>
+			</BaseForm>
+		</main>
 	</div>
 </template>
 
 <script>
 import ValidateForm from '@/scripts/ValidateForm'
+import TopBar from '@/components/TopBar'
 
 export default {
+	components: {
+		TopBar
+	},
 	data() {
 		return {
 			loading: false,
@@ -49,22 +65,27 @@ export default {
 				return
 			}
 
+			this.loading = true
+
 			this.$axios.post('groups', validate.formData)
 				.then(res => {
 					this.$store.commit('groups/APPEND_GROUP', res.data.group)
-					this.$router.push({ name: 'groups' }) // FIXME push to the new group
+					this.$router.push({ name: 'group', params: { id: res.data.group.id } })
 					this.loading = false
 				})
 				.catch(() => {
 					this.loading = false
 				})
+		},
+		onClickLeft() {
+			this.$router.push({ name: 'groups' })
 		}
 	}
 }
 </script>
 
 <style lang="scss" scoped>
-.page {
+main {
 	padding: 20px;
 }
 </style>

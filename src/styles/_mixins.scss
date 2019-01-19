@@ -1,3 +1,11 @@
+@mixin baseDefaultStyles() {
+  outline: 0;
+  color: rgba(255, 255, 255, .87);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
 @mixin animRotate($duration: 1s) {
   animation-name: rotate;
   animation-duration: $duration;

@@ -9,9 +9,17 @@
 <script>
 export default {
 	name: 'BaseForm',
+	props: {
+		loading: {
+			type: Boolean,
+			default: false
+		}
+	},
 	methods: {
 		onSubmit() {
-			this.$emit('submit')
+			if (!this.loading) {
+				this.$emit('submit')
+			}
 		}
 	}
 }

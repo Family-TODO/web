@@ -1,7 +1,7 @@
 <template>
 	<div class="page">
 		<!--TODO Group name-->
-		<TopBar title="Tasks" />
+		<TopBar title="Group ??" />
 		<main>
 			<Tasks />
 		</main>

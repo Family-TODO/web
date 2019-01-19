@@ -1,12 +1,10 @@
+@import "../../../styles/mixins";
+
 .base-input {
   > input {
-    outline: 0;
+    @include baseDefaultStyles();
+    border-radius: 5px;
     padding: 0 15px;
     height: 40px;
-    color: #fff;
-    background: rgba(0, 0, 0, .4);
-    border: 1px solid rgba(0, 0, 0, .2);
-    border-radius: 5px;
-    width: 100%;
   }
 }

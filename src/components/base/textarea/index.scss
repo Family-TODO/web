@@ -1,3 +1,7 @@
+@import "../../../styles/mixins";
+
 .base-textarea {
-  //
+  @include baseDefaultStyles();
+  padding: 10px 15px;
+  resize: none;
 }

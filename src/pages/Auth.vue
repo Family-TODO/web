@@ -1,7 +1,9 @@
 <template>
 	<main class="page">
 		<Logo />
-		<BaseForm @submit="onSubmit">
+		<BaseForm
+			@submit="onSubmit"
+			:loading="loading">
 			<BaseInput
 				v-model="form.login.value"
 				autofocus
