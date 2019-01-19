@@ -5,21 +5,26 @@
 			left-icon="settings"
 			:left-click="onClickLeft"
 			:loading="loading"
-			right-disable />
+			right-disable
+		/>
 		<main>
 			<BaseForm
-				@submit="onSubmit"
 				:loading="loading"
-				autofocus>
+				autofocus
+				@submit="onSubmit"
+			>
 				<BaseInput
 					v-model="form.name.value"
 					label="Name"
-					autofocus />
+					autofocus
+				/>
 				<BaseTextarea
 					v-model="form.description.value"
 					label="Description"
 				/>
-				<BaseButton :loading="loading">Create</BaseButton>
+				<BaseButton :loading="loading">
+					Create
+				</BaseButton>
 			</BaseForm>
 		</main>
 	</div>

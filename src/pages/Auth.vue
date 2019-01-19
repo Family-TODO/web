@@ -2,8 +2,9 @@
 	<main class="page">
 		<Logo />
 		<BaseForm
+			:loading="loading"
 			@submit="onSubmit"
-			:loading="loading">
+		>
 			<BaseInput
 				ref="login"
 				v-model="login"
@@ -13,7 +14,9 @@
 				v-model="password"
 				type="password"
 			/>
-			<BaseButton :loading="loading">Login</BaseButton>
+			<BaseButton :loading="loading">
+				Login
+			</BaseButton>
 		</BaseForm>
 	</main>
 </template>
@@ -54,11 +57,6 @@ export default {
 			}
 		}
 	},
-	mounted() {
-		this.$nextTick(() => {
-			this.updateFocus()
-		})
-	},
 	computed: {
 		loading() {
 			return this.$store.state.profile.loading
@@ -79,6 +77,11 @@ export default {
 				this.form.password.value = value
 			}
 		}
+	},
+	mounted() {
+		this.$nextTick(() => {
+			this.updateFocus()
+		})
 	},
 	methods: {
 		onSubmit() {

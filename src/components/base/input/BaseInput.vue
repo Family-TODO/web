@@ -2,13 +2,14 @@
 	<div class="base-input">
 		<label
 			v-if="hasLabel"
-			:for="strId">
+			:for="strId"
+		>
 			{{ label }}
 		</label>
 		<input
+			:id="strId"
 			ref="input"
 			:value="value"
-			:id="strId"
 			v-bind="$attrs"
 			v-on="listeners"
 		>
@@ -20,10 +21,10 @@ import inputMixin from '@/mixins/input'
 
 export default {
 	name: 'BaseInput',
-	inheritAttrs: false,
 	mixins: [
 		inputMixin
 	],
+	inheritAttrs: false,
 	props: {
 		value: {
 			type: String,

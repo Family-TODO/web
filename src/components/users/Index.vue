@@ -9,11 +9,13 @@
 			<UserItem
 				v-for="user in users"
 				:key="user.id"
-				:user="user" />
+				:user="user"
+			/>
 		</transition-group>
 		<BaseButton
 			v-if="!value"
-			@click="onClickShowAll">
+			@click="onClickShowAll"
+		>
 			Show More
 		</BaseButton>
 	</div>

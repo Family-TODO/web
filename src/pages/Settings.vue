@@ -7,7 +7,9 @@
 		/>
 		<main>
 			<section class="top">
-				<BaseButton @click="onClickProfile">Profile</BaseButton>
+				<BaseButton @click="onClickProfile">
+					Profile
+				</BaseButton>
 			</section>
 			<section class="center">
 				<span>Users</span>
@@ -17,7 +19,10 @@
 				<BaseButton
 					:loading="loadingProfile"
 					class="btn-logout"
-					@click="logout">Logout</BaseButton>
+					@click="logout"
+				>
+					Logout
+				</BaseButton>
 			</section>
 		</main>
 	</div>

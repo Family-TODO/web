@@ -1,5 +1,7 @@
 <template>
-	<i class="base-icon material-icons"><slot>{{ name }}</slot></i>
+	<i class="base-icon material-icons">
+		<slot>{{ name }}</slot>
+	</i>
 </template>
 
 <script>

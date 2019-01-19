@@ -9,7 +9,7 @@ class ELem {
 	 * @param {String} type - success, error
 	 * @param {Number} timeout - ms
 	 */
-	constructor(message, type = 'success', timeout = 2000000) {
+	constructor(message, type = 'success', timeout = 2000) {
 		this.appendEl = document.querySelector('#notifications')
 		this.rootEl = document.createElement('div')
 		this.id = guidGenerator()

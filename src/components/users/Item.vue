@@ -1,7 +1,8 @@
 <template>
 	<div
 		class="user"
-		@click="onClick">
+		@click="onClick"
+	>
 		{{ user.name || user.login }}
 	</div>
 </template>

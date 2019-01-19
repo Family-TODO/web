@@ -1,7 +1,8 @@
 <template>
 	<form
 		class="base-form"
-		@submit.prevent="onSubmit">
+		@submit.prevent="onSubmit"
+	>
 		<slot />
 	</form>
 </template>

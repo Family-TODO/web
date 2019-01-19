@@ -11,17 +11,22 @@
 			</header>
 			<footer class="group__footer">
 				<div
+					v-if="lastTask"
 					class="group__footer-task"
-					v-if="lastTask">
+				>
 					<BaseCheckbox
 						:value="lastTask.is_done"
-						only-view />
-					<div class="group__footer-task__name">{{ lastTask.name }}</div>
+						only-view
+					/>
+					<div class="group__footer-task__name">
+						{{ lastTask.name }}
+					</div>
 				</div>
 				<BaseIcon
 					v-if="group.creator_id === currentUser.id"
 					name="star"
-					class="color_yellow" />
+					class="color_yellow"
+				/>
 				<div class="group__footer-users">
 					<span>{{ group.users.length }}</span>
 					<BaseIcon name="people" />
@@ -51,8 +56,8 @@ export default {
 			return this.group.tasks[0]
 		},
 		time() {
-			const date = this.group.updated_at
-			const now = new Date
+			// const date = this.group.updated_at
+			// const now = new Date
 
 			// TODO Calculate date (hour:minute or Day of week or day.month or year
 

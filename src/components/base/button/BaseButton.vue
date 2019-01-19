@@ -11,7 +11,10 @@
 		<slot />
 		<span
 			v-if="loading"
-			class="base-button__loading"><span /><span /></span>
+			class="base-button__loading"
+		>
+			<span /><span />
+		</span>
 	</button>
 </template>
 

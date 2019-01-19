@@ -2,14 +2,15 @@
 	<div class="base-textarea">
 		<label
 			v-if="hasLabel"
-			:for="strId">
+			:for="strId"
+		>
 			{{ label }}
 		</label>
 		<textarea
+			:id="strId"
 			ref="input"
 			:value="value"
 			rows="5"
-			:id="strId"
 			v-bind="$attrs"
 			v-on="listeners"
 		/>
@@ -21,10 +22,10 @@ import inputMixin from '@/mixins/input'
 
 export default {
 	name: 'BaseTextarea',
-	inheritAttrs: false,
 	mixins: [
 		inputMixin
 	],
+	inheritAttrs: false,
 	props: {
 		value: {
 			type: String,

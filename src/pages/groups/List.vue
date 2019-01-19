@@ -4,13 +4,15 @@
 			left-icon="settings"
 			:left-click="onClickLeft"
 			:loading="loading"
-			@right="fetchGroups" />
+			@right="fetchGroups"
+		/>
 		<main>
 			<Groups />
 			<BaseLoading v-if="loading" />
 			<BaseButton
 				icon
-				@click="onClickCreate">
+				@click="onClickCreate"
+			>
 				<BaseIcon name="add" />
 			</BaseButton>
 		</main>

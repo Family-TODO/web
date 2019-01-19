@@ -19,17 +19,17 @@
 					<span>{{ title || 'Home page' }}</span>
 				</slot>
 			</div>
-				<div
-					v-if="!rightDisable"
-					:class="['top-bar__right', {
-						'loading': loading
-					}]"
-					@click="onRightClick"
-				>
-					<slot name="right">
-						<BaseIcon :name="rightIcon" />
-					</slot>
-				</div>
+			<div
+				v-if="!rightDisable"
+				:class="['top-bar__right', {
+					'loading': loading
+				}]"
+				@click="onRightClick"
+			>
+				<slot name="right">
+					<BaseIcon :name="rightIcon" />
+				</slot>
+			</div>
 		</header>
 	</transition>
 </template>

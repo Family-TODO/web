@@ -1,8 +1,9 @@
 <template>
-	<div :class="['base-checkbox', {
-		'base-checkbox_checked': value,
-		'base-checkbox_only_view': onlyView
-	}]"
+	<div
+		:class="['base-checkbox', {
+			'base-checkbox_checked': value,
+			'base-checkbox_only_view': onlyView
+		}]"
 		v-on="listeners"
 	/>
 </template>
