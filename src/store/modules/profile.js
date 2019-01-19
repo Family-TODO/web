@@ -63,14 +63,9 @@ const actions = {
 
 		axios.post('auth', data)
 			.then(async res => {
-				const data = res.data
-
-				if (data && data.token) {
-					axios.defaults.headers['Auth'] = data.token
-					localStorage.setItem(STORE_TOKEN, data.token)
-					await dispatch('getUser')
-				}
-
+				axios.defaults.headers['Auth'] = res.data.token
+				localStorage.setItem(STORE_TOKEN, res.data.token)
+				await dispatch('getUser')
 				commit('SET_LOADING', false)
 			})
 			.catch(() => {
@@ -82,10 +77,7 @@ const actions = {
 
 		axios.post('auth/logout')
 			.then(res => {
-				if (res.data && res.data.result) {
-					commit('CLEAR_ALL')
-				}
-
+				commit('CLEAR_ALL')
 				commit('SET_LOADING', false)
 			})
 			.catch(() => {
@@ -95,10 +87,8 @@ const actions = {
 	getUser({ commit }) {
 		axios.get('auth/me')
 			.then(res => {
-				if (res.data && res.data.user) {
-					localStorage.setItem(STORE_USER, JSON.stringify(res.data.user))
-					commit('SET_USER', res.data.user)
-				}
+				localStorage.setItem(STORE_USER, JSON.stringify(res.data.user))
+				commit('SET_USER', res.data.user)
 			})
 	}
 }

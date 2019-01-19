@@ -9,8 +9,10 @@ axios.defaults.baseURL = 'api'
 
 axios.interceptors.response.use(
 	(response) => {
-		if (response.data) {
-			notification.success(response.data.result || response.data.error)
+		const message = response.data.result || response.data.error
+
+		if (message) {
+			notification.success(message)
 		}
 
 		return response
@@ -27,7 +29,7 @@ axios.interceptors.response.use(
 		}
 
 		if (response.data) {
-			notification.error(response.data.error || 'Error')
+			notification.error(response.data.error || `[${response.status}] Error`)
 		}
 
 		return Promise.reject(err)
