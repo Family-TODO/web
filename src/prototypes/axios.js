@@ -8,8 +8,12 @@ import axios from 'axios'
 axios.defaults.baseURL = 'api'
 
 axios.interceptors.response.use(
-	(resp) => {
-		return resp
+	(response) => {
+		if (response.data) {
+			notification.success(response.data.result || response.data.error)
+		}
+
+		return response
 	},
 	(err) => {
 		if (!err.response) {
@@ -22,8 +26,8 @@ axios.interceptors.response.use(
 			store.commit('profile/CLEAR_ALL')
 		}
 
-		if (response.data && response.data.error) {
-			notification.error(response.data.error)
+		if (response.data) {
+			notification.error(response.data.error || 'Error')
 		}
 
 		return Promise.reject(err)

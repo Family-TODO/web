@@ -16,6 +16,8 @@
  *  }
  */
 
+// TODO Show form error (list)
+
 export default class ValidateForm {
 
 	/** @param {Object} form */

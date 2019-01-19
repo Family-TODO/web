@@ -30,6 +30,7 @@ export default {
 		return {
 			form: {
 				login: {
+					// FIXME Remove value
 					value: 'admin',
 					error: {
 						has: false,
@@ -41,6 +42,7 @@ export default {
 					]
 				},
 				password: {
+					// FIXME Remove value
 					value: 'admin123',
 					error: {
 						has: false,
@@ -48,7 +50,7 @@ export default {
 					},
 					validation: [
 						v => !!v || 'Password is empty',
-						v => v.length > 5 || 'Min length is 6'
+						v => v.length >= 6 || 'Min length is 6'
 					]
 				}
 			}
@@ -64,7 +66,7 @@ export default {
 			const validate = new ValidateForm(this.form)
 
 			if (!validate.result) {
-				this.$notification.error('Validation of form has errors')
+				this.$notification.error('Validation error')
 				return
 			}
 
