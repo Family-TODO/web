@@ -9,11 +9,19 @@
 			@right="fetchUsers"
 		/>
 		<main>
-			<Users />
-			<br><hr><br>
-			<BaseButton
-				:loading="loadingProfile"
-				@click="logout">Logout</BaseButton>
+			<section class="top">
+				<BaseButton @click="onClickProfile">Profile</BaseButton>
+			</section>
+			<section class="center">
+				<span>Users</span>
+				<Users v-model="showAll" />
+			</section>
+			<section class="bottom">
+				<BaseButton
+					:loading="loadingProfile"
+					class="btn-logout"
+					@click="logout">Logout</BaseButton>
+			</section>
 		</main>
 	</div>
 </template>
@@ -25,6 +33,11 @@ import TopBar from '@/components/TopBar'
 export default {
 	components: {
 		Users, TopBar
+	},
+	data() {
+		return {
+			showAll: false
+		}
 	},
 	computed: {
 		users() {
@@ -38,18 +51,40 @@ export default {
 		}
 	},
 	mounted() {
-		console.log('Settings mounted')
 		if (!this.users.length) {
 			this.fetchUsers()
 		}
 	},
 	methods: {
 		fetchUsers() {
+			this.showAll = false
 			return this.$store.dispatch('users/fetchList')
 		},
 		logout() {
 			this.$store.dispatch('profile/logout')
+		},
+		onClickProfile() {
+			this.$router.push({ name: 'profile' })
 		}
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.top, .center, .bottom {
+	padding: 20px;
+}
+
+.center {
+	background: rgba(0, 0, 0, .3);
+	> span {
+		display: block;
+		font-size: 1rem;
+		font-weight: bold;
+		margin-bottom: 10px;
+		padding-bottom: 5px;
+		border-bottom: 1px solid;
+		color: rgba(255, 255, 255, .87);
+	}
+}
+</style>
