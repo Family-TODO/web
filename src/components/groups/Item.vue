@@ -1,6 +1,6 @@
 <template>
 	<article class="group">
-		<router-link :to="{ name: 'tasks', params: { group: group.id } }">
+		<router-link :to="{ name: 'group', params: { id: group.id } }">
 			<header class="group__header">
 				<div class="group__header-name">
 					<span>{{ group.name }}</span>
@@ -19,7 +19,7 @@
 					<div class="group__footer-task__name">{{ lastTask.name }}</div>
 				</div>
 				<BaseIcon
-					v-if="group.creator_id === user.id"
+					v-if="group.creator_id === currentUser.id"
 					name="star"
 					class="color_yellow" />
 				<div class="group__footer-users">
@@ -40,7 +40,7 @@ export default {
 		}
 	},
 	computed: {
-		user() {
+		currentUser() {
 			return this.$store.state.profile.user
 		},
 		lastTask() {

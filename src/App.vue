@@ -14,7 +14,8 @@ export default {
 	},
 	watch: {
 		user(val) {
-			this.$router.push({ name: val ? 'dashboard' : 'auth' })
+			console.log('Watch user', val)
+			this.$router.push({ name: val ? 'groups' : 'auth' })
 		}
 	}
 }

@@ -1,13 +1,20 @@
 <template>
 	<div class="tasks">
-		Tasks - {{ this.$route.params.group }}
+		<BaseButton @click="onClickDelete">Delete</BaseButton>
+		Tasks - {{ this.$route.params.id }}
 	</div>
 </template>
 
 <script>
 export default {
-	mounted() {
-		console.log(this.$router, this.$route)
+	methods: {
+		onClickDelete() {
+			this.$axios.delete(`groups/${this.$route.params.id}`)
+				.then(res => {
+					this.$router.push({ name: 'groups' })
+					// TODO splice
+				})
+		}
 	}
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
 	<transition-group
 		tag="div"
-		name="groups-animate"
+		name="list-animate"
 		class="groups"
 		appear
 	>

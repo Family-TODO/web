@@ -20,8 +20,6 @@ const mutations = {
 		state.loading = toggle
 	},
 	CLEAR_ALL(state) {
-		router.push({ name: 'auth' })
-
 		// Clear data from axios
 		axios.defaults.headers['Auth'] = null
 
@@ -31,6 +29,8 @@ const mutations = {
 		// Clear data from localStorage
 		localStorage.removeItem(STORE_TOKEN)
 		localStorage.removeItem(STORE_USER)
+
+		router.push({ name: 'auth' })
 	}
 }
 
@@ -76,7 +76,7 @@ const actions = {
 		commit('SET_LOADING', true)
 
 		axios.post('auth/logout')
-			.then(res => {
+			.then(() => {
 				commit('CLEAR_ALL')
 				commit('SET_LOADING', false)
 			})

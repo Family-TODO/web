@@ -1,11 +1,11 @@
 <template>
 	<div
-		id="dashboard"
+		id="groups"
 		class="page"
 	>
 		<TopBar
-			:left-click="onClickLeft"
 			left-icon="settings"
+			:left-click="onClickLeft"
 			:loading="loading"
 			@right="fetchGroups" />
 		<main>

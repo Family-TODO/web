@@ -4,8 +4,8 @@
 		class="page"
 	>
 		Page Not Found
-		<RouterLink :to="{ name: 'dashboard' }">
-			Dashboard
+		<RouterLink to="/">
+			Home page
 		</RouterLink>
 	</main>
 </template>

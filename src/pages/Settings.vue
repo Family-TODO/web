@@ -3,38 +3,50 @@
 		id="settings"
 		class="page"
 	>
-		<TopBar title="Settings" />
+		<TopBar
+			title="Settings"
+			:loading="loadingUsers"
+			@right="fetchUsers"
+		/>
 		<main>
+			<Users />
+			<br><hr><br>
 			<BaseButton
-				:loading="loading"
+				:loading="loadingProfile"
 				@click="logout">Logout</BaseButton>
-			Settings
-			<!--TODO profile section-->
-			<!--TODO list of users-->
 		</main>
 	</div>
 </template>
 
 <script>
-import Tasks from '@/components/tasks/Index'
+import Users from '@/components/users/Index'
 import TopBar from '@/components/TopBar'
 
 export default {
 	components: {
-		Tasks, TopBar
-	},
-	props: {
-		group: {
-			type: Object,
-			default: () => {}
-		}
+		Users, TopBar
 	},
 	computed: {
-		loading() {
+		users() {
+			return this.$store.state.users.list
+		},
+		loadingUsers() {
+			return this.$store.state.users.loading
+		},
+		loadingProfile() {
 			return this.$store.state.profile.loading
 		}
 	},
+	mounted() {
+		console.log('Settings mounted')
+		if (!this.users.length) {
+			this.fetchUsers()
+		}
+	},
 	methods: {
+		fetchUsers() {
+			return this.$store.dispatch('users/fetchList')
+		},
 		logout() {
 			this.$store.dispatch('profile/logout')
 		}

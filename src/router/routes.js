@@ -18,25 +18,28 @@ const authorizedRoutes = {
 	path: '',
 	component: loadLayout('Default'),
 	children: [
+
+		// Groups
 		{
-			path: '/dashboard',
-			name: 'dashboard',
-			component: loadPage('Dashboard')
+			path: '/groups',
+			name: 'groups',
+			component: loadPage('groups/List')
+		},
+		{
+			path: '/group/:id',
+			name: 'group',
+			component: loadPage('groups/One')
 		},
 		{
 			path: '/groups/create',
 			name: 'groups-create',
-			component: loadPage('GroupCreate')
+			component: loadPage('groups/Create')
 		},
+
 		{
 			path: '/profile',
 			name: 'profile',
 			component: loadPage('Profile')
-		},
-		{
-			path: '/tasks/:group',
-			name: 'tasks',
-			component: loadPage('Tasks')
 		},
 		{
 			path: '/settings',

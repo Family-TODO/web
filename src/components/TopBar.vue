@@ -75,7 +75,7 @@ export default {
 			if (this.leftClick) {
 				this.leftClick(evt)
 			} else {
-				this.$router.push({ name: 'dashboard' })
+				this.$router.push({ name: 'groups' })
 			}
 
 			this.$emit('left', evt)
