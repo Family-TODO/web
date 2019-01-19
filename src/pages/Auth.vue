@@ -1,8 +1,5 @@
 <template>
-	<main
-		id="auth"
-		class="page"
-	>
+	<main class="page">
 		<Logo />
 		<BaseForm @submit="onSubmit">
 			<BaseInput
@@ -30,7 +27,7 @@ export default {
 		return {
 			form: {
 				login: {
-					// FIXME Remove value
+					// FIXME Remove default value
 					value: 'admin',
 					error: {
 						has: false,
@@ -42,7 +39,7 @@ export default {
 					]
 				},
 				password: {
-					// FIXME Remove value
+					// FIXME Remove default value
 					value: 'admin123',
 					error: {
 						has: false,
@@ -75,3 +72,12 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.page {
+	height: 100vh;
+	> .base-form {
+		padding: 20px;
+	}
+}
+</style>

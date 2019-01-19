@@ -1,8 +1,5 @@
 <template>
-	<div
-		id="groups"
-		class="page"
-	>
+	<div class="page">
 		<TopBar
 			left-icon="settings"
 			:left-click="onClickLeft"
@@ -54,3 +51,14 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+main {
+	> .base-button {
+		position: absolute;
+		right: 20px;
+		bottom: 20px;
+		border-radius: 10px;
+	}
+}
+</style>

@@ -1,8 +1,5 @@
 <template>
-	<div
-		id="settings"
-		class="page"
-	>
+	<div class="page">
 		<TopBar
 			title="Settings"
 			:loading="loadingUsers"

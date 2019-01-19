@@ -81,7 +81,9 @@ export default {
 			this.$emit('left', evt)
 		},
 		onRightClick(evt) {
-			this.$emit('right', evt)
+			if (!this.loading) {
+				this.$emit('right', evt)
+			}
 		}
 	}
 }

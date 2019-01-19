@@ -1,8 +1,5 @@
 <template>
-	<div
-		id="profile"
-		class="page"
-	>
+	<div class="page">
 		<TopBar title="Profile" />
 		<main>
 			{{ user }}

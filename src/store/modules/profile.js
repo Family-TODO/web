@@ -23,12 +23,12 @@ const mutations = {
 		// Clear data from axios
 		axios.defaults.headers['Auth'] = null
 
-		// Clear data from store
-		state.user = null
-
 		// Clear data from localStorage
 		localStorage.removeItem(STORE_TOKEN)
 		localStorage.removeItem(STORE_USER)
+
+		// Clear data from store
+		state.user = null
 
 		router.push({ name: 'auth' })
 	}

@@ -1,8 +1,5 @@
 <template>
-	<div
-		id="tasks"
-		class="page"
-	>
+	<div class="page">
 		<!--TODO Group name-->
 		<TopBar title="Tasks" />
 		<main>

@@ -1,7 +1,5 @@
 <template>
-	<div
-		id="group_create"
-		class="page">
+	<div class="page">
 		<BaseForm @submit="onSubmit">
 			<BaseInput v-model="form.name.value" />
 			<BaseTextarea v-model="form.description.value" />
@@ -64,3 +62,9 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.page {
+	padding: 20px;
+}
+</style>
