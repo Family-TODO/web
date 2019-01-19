@@ -1,6 +1,6 @@
 <template>
 	<main
-		id="page-not-found"
+		id="not-found"
 		class="page"
 	>
 		Page Not Found

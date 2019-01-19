@@ -1,5 +1,7 @@
 <template>
-	<div>
+	<div
+		id="group_create"
+		class="page">
 		<form @submit.prevent="onSubmit">
 			<BaseInput v-model="form.name" />
 			<BaseTextarea v-model="form.description" />

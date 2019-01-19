@@ -1,7 +1,7 @@
 <template>
 	<div
 		id="profile"
-		class="page page_user"
+		class="page"
 	>
 		<TopBar title="Profile" />
 		<main>
