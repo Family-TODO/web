@@ -1,0 +1,6 @@
+@mixin animRotate($duration: 1s) {
+  animation-name: rotate;
+  animation-duration: $duration;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}

@@ -21,7 +21,9 @@
 			</div>
 				<div
 					v-if="!rightDisable"
-					class="top-bar__right"
+					:class="['top-bar__right', {
+						'loading': loading
+					}]"
 					@click="onRightClick"
 				>
 					<slot name="right">
@@ -62,6 +64,10 @@ export default {
 		rightClick: {
 			type: Function,
 			default: null
+		},
+		loading: {
+			type: Boolean,
+			default: false
 		}
 	},
 	methods: {

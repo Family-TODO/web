@@ -6,6 +6,7 @@
 		<TopBar
 			:left-click="onClickLeft"
 			left-icon="settings"
+			:loading="loading"
 			@right="fetchGroups" />
 		<main>
 			<Groups />
