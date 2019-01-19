@@ -15,12 +15,6 @@ import TopBar from '@/components/TopBar'
 export default {
 	components: {
 		Tasks, TopBar
-	},
-	props: {
-		group: {
-			type: Object,
-			default: () => {}
-		}
 	}
 }
 </script>

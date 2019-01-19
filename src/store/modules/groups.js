@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const state = {
 	list: [],
-	loading: true
+	loading: false
 }
 
 const mutations = {

@@ -33,11 +33,6 @@ export default {
 			return this.$store.state.groups.loading
 		}
 	},
-	mounted() {
-		if (!this.groups.length) {
-			this.fetchGroups()
-		}
-	},
 	methods: {
 		fetchGroups() {
 			this.$store.dispatch('groups/fetchList')
