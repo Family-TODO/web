@@ -1,6 +1,5 @@
 'use strict'
 
-import router from '../router'
 import store from '../store'
 import axios from 'axios'
 
@@ -19,17 +18,7 @@ axios.interceptors.response.use(
 		const { response } = err
 
 		if (response.status === 401) {
-			router.push({ name: 'dashboard' })
-
-			// Clear data from axios
-			axios.defaults.headers['Auth'] = null
-
-			// Clear data from store
-			store.commit('profile/CLEAR_USER')
-
-			// Clear data from localStorage
-			localStorage.removeItem('token')
-			localStorage.removeItem('user')
+			store.commit('profile/CLEAR_ALL')
 		}
 
 		if (response.data && response.data.message) {

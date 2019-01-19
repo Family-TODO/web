@@ -5,6 +5,9 @@
 	>
 		<TopBar title="Settings" />
 		<main>
+			<BaseButton
+				:loading="loading"
+				@click="logout">Logout</BaseButton>
 			Settings
 			<!--TODO profile section-->
 			<!--TODO list of users-->
@@ -24,6 +27,16 @@ export default {
 		group: {
 			type: Object,
 			default: () => {}
+		}
+	},
+	computed: {
+		loading() {
+			return this.$store.state.profile.loading
+		}
+	},
+	methods: {
+		logout() {
+			this.$store.dispatch('profile/logout')
 		}
 	}
 }

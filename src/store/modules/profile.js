@@ -17,11 +17,21 @@ const mutations = {
 	SET_USER(state, obj) {
 		state.user = obj
 	},
-	CLEAR_USER(state) {
-		state.user = null
-	},
 	SET_LOADING(state, toggle) {
 		state.loading = toggle
+	},
+	CLEAR_ALL(state) {
+		router.push({ name: 'auth' })
+
+		// Clear data from axios
+		axios.defaults.headers['Auth'] = null
+
+		// Clear data from store
+		state.user = null
+
+		// Clear data from localStorage
+		localStorage.removeItem(STORE_TOKEN)
+		localStorage.removeItem(STORE_USER)
 	}
 }
 
@@ -61,7 +71,26 @@ const actions = {
 					localStorage.setItem(STORE_TOKEN, data.token)
 					await dispatch('getUser')
 				} else {
-					notification.error(res.data.error)
+					notification.error(res.data.error || 'Error')
+				}
+
+				commit('SET_LOADING', false)
+			})
+			.catch(() => {
+				notification.error('The server returned an error')
+				commit('SET_LOADING', false)
+			})
+	},
+	logout({ commit }) {
+		commit('SET_LOADING', true)
+
+		axios.post('auth/logout')
+			.then(res => {
+				if (res.data && res.data.result) {
+					commit('CLEAR_ALL')
+					notification.success('Success')
+				} else {
+					notification.error(res.data.error || 'Error')
 				}
 
 				commit('SET_LOADING', false)
