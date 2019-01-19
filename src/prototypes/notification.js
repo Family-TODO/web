@@ -9,7 +9,7 @@ class ELem {
 	 * @param {String} type - success, error
 	 * @param {Number} timeout - ms
 	 */
-	constructor(message, type = 'success', timeout = 2000) {
+	constructor(message, type = 'success', timeout = 2000000) {
 		this.appendEl = document.querySelector('#notifications')
 		this.rootEl = document.createElement('div')
 		this.id = guidGenerator()
@@ -19,7 +19,7 @@ class ELem {
 
 		this.rootEl.id = `notification-${this.id}`
 		this.rootEl.classList.add('base-notification', type)
-		this.rootEl.innerHTML = this.getIcon() + this.message
+		this.rootEl.innerHTML = this.getIcon() + `<div>${this.message}<div>`
 	}
 
 	getIcon() {

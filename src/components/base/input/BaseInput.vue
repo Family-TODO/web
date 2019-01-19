@@ -6,6 +6,7 @@
 			{{ label }}
 		</label>
 		<input
+			ref="input"
 			:value="value"
 			:id="strId"
 			v-bind="$attrs"

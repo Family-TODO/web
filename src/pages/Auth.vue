@@ -5,11 +5,12 @@
 			@submit="onSubmit"
 			:loading="loading">
 			<BaseInput
-				v-model="form.login.value"
-				autofocus
+				ref="login"
+				v-model="login"
 			/>
 			<BaseInput
-				v-model="form.password.value"
+				ref="password"
+				v-model="password"
 				type="password"
 			/>
 			<BaseButton :loading="loading">Login</BaseButton>
@@ -29,8 +30,7 @@ export default {
 		return {
 			form: {
 				login: {
-					// FIXME Remove default value
-					value: 'admin',
+					value: '',
 					error: {
 						has: false,
 						text: ''
@@ -41,8 +41,7 @@ export default {
 					]
 				},
 				password: {
-					// FIXME Remove default value
-					value: 'admin123',
+					value: '',
 					error: {
 						has: false,
 						text: ''
@@ -55,9 +54,30 @@ export default {
 			}
 		}
 	},
+	mounted() {
+		this.$nextTick(() => {
+			this.updateFocus()
+		})
+	},
 	computed: {
 		loading() {
 			return this.$store.state.profile.loading
+		},
+		login: {
+			get() {
+				return this.form.login.value
+			},
+			set(value) {
+				this.form.login.value = value
+			}
+		},
+		password: {
+			get() {
+				return this.form.password.value
+			},
+			set(value) {
+				this.form.password.value = value
+			}
 		}
 	},
 	methods: {
@@ -66,10 +86,27 @@ export default {
 
 			if (!validate.result) {
 				this.$notification.error('Validation error')
+				this.updateFocus()
 				return
 			}
 
+			// Send request to the server
+			// And get the user
 			this.$store.dispatch('profile/auth', validate.formData)
+		},
+		/** @return Boolean */
+		updateFocus() {
+			for (let [key, item] of Object.entries(this.form)) {
+				if (!item.value || item.error.has) {
+					this.setFocus(key)
+					return true
+				}
+			}
+
+			return false
+		},
+		setFocus(type) {
+			this.$refs[type].$refs.input.focus()
 		}
 	}
 }

@@ -6,6 +6,7 @@
 			{{ label }}
 		</label>
 		<textarea
+			ref="input"
 			:value="value"
 			rows="5"
 			:id="strId"

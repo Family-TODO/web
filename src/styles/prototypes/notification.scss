@@ -19,8 +19,6 @@
   font-weight: 600;
   transition: .3s;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   pointer-events: none;
   user-select: none;
   will-change: transform;
@@ -32,6 +30,10 @@
   }
   &.error {
     color: #b84d4d;
+  }
+  > div {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   > .base-icon {
     margin-right: 5px;
