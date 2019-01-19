@@ -1,5 +1,6 @@
 'use strict'
 
+import { notification } from '@/prototypes/notification'
 import store from '../store'
 import axios from 'axios'
 
@@ -21,8 +22,8 @@ axios.interceptors.response.use(
 			store.commit('profile/CLEAR_ALL')
 		}
 
-		if (response.data && response.data.message) {
-			// TODO Show message
+		if (response.data && response.data.error) {
+			notification.error(response.data.error)
 		}
 
 		return Promise.reject(err)
