@@ -88,3 +88,72 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+@import "../styles/mixins";
+.top-bar {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 45px;
+	padding: 5px 0;
+	background-color: rgba(0, 0, 0, .2);
+	border-bottom: 1px solid #2c2c4d;
+}
+
+.top-bar__left, .top-bar__right {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 100%;
+	line-height: 0;
+	cursor: pointer;
+	user-select: none;
+	> i {
+		font-size: 20px;
+	}
+}
+
+.top-bar__left {
+	margin-left: 5px;
+}
+
+.top-bar__center {
+	flex: 1;
+	flex-basis: auto;
+	padding: 0 10px;
+	will-change: transform;
+	> span {
+		font-weight: 600;
+		letter-spacing: 1px;
+	}
+}
+
+.top-bar__right {
+	margin-right: 5px;
+	&.loading {
+		opacity: .7;
+		pointer-events: none;
+		@include animRotate();
+	}
+}
+
+// <animate>
+
+.top-bar-animate-enter-active {
+	.top-bar__center {
+		transform: translate3d(-10px, 0, 0);
+		opacity: .2;
+		transition: .4s;
+	}
+}
+
+.top-bar-animate-enter-to {
+	.top-bar__center {
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+}
+</style>
