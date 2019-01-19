@@ -1,16 +1,29 @@
 <template>
-	<textarea
-		:value="value"
-		class="base-textarea"
-		rows="5"
-		v-bind="$attrs"
-		v-on="listeners"
-	/>
+	<div class="base-textarea">
+		<label
+			v-if="hasLabel"
+			:for="strId">
+			{{ label }}
+		</label>
+		<textarea
+			:value="value"
+			rows="5"
+			:id="strId"
+			v-bind="$attrs"
+			v-on="listeners"
+		/>
+	</div>
 </template>
 
 <script>
+import inputMixin from '@/mixins/input'
+
 export default {
 	name: 'BaseTextarea',
+	inheritAttrs: false,
+	mixins: [
+		inputMixin
+	],
 	props: {
 		value: {
 			type: String,

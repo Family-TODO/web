@@ -2,6 +2,8 @@
 
 .base-textarea {
   @include baseDefaultStyles();
-  padding: 10px 15px;
-  resize: none;
+  > textarea {
+    padding: 10px 15px;
+    resize: none;
+  }
 }

@@ -9,11 +9,16 @@
 		<main>
 			<BaseForm
 				@submit="onSubmit"
-				:loading="loading">
+				:loading="loading"
+				autofocus>
 				<BaseInput
 					v-model="form.name.value"
+					label="Name"
 					autofocus />
-				<BaseTextarea v-model="form.description.value" />
+				<BaseTextarea
+					v-model="form.description.value"
+					label="Description"
+				/>
 				<BaseButton :loading="loading">Create</BaseButton>
 			</BaseForm>
 		</main>

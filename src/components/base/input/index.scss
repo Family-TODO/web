@@ -1,9 +1,8 @@
 @import "../../../styles/mixins";
 
 .base-input {
+  @include baseDefaultStyles();
   > input {
-    @include baseDefaultStyles();
-    border-radius: 5px;
     padding: 0 15px;
     height: 40px;
   }

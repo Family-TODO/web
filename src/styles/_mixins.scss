@@ -1,9 +1,15 @@
 @mixin baseDefaultStyles() {
-  outline: 0;
-  color: rgba(255, 255, 255, .87);
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  width: 100%;
+  > input, textarea {
+    outline: 0;
+    color: rgba(255, 255, 255, .87);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 100%;
+  }
+  > label {
+    display: block;
+    padding: 5px 10px;
+  }
 }
 
 @mixin animRotate($duration: 1s) {
