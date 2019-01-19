@@ -1,24 +1,27 @@
-.base-notification {
-  position: absolute;
-  bottom: 100%;
+#notifications {
+  position: fixed;
+  top: 10px;
   left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  user-select: none;
+}
+
+.base-notification {
   display: flex;
   align-items: center;
-  justify-content: center;
-  transform: translate3D(-50%, -10px, 0);
   padding: 4px 15px 4px 10px;
   min-width: 100px;
   background: rgba(0, 0, 0, .8);
-  border-radius: 10px;
-  opacity: .5;
+  opacity: 0;
   font-size: .8rem;
   font-weight: 600;
   transition: .3s;
   pointer-events: none;
+  user-select: none;
   will-change: transform;
-  &.active {
+  &:first-child {
     opacity: 1;
-    transform: translate3d(-50%, calc(100% + 10px), 0);
   }
   &.success {
     color: #4db871;
@@ -28,5 +31,9 @@
   }
   > .base-icon {
     margin-right: 5px;
+  }
+  + .active {
+    margin-top: 10px;
+    opacity: 1;
   }
 }

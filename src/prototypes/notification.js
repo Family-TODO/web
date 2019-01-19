@@ -10,6 +10,7 @@ class ELem {
 	 * @param {Number} timeout - ms
 	 */
 	constructor(message, type = 'success', timeout = 2000) {
+		this.appendEl = document.querySelector('#notifications')
 		this.rootEl = document.createElement('div')
 		this.id = guidGenerator()
 		this.message = message
@@ -41,13 +42,13 @@ class ELem {
 	}
 
 	append() {
-		document.body.appendChild(this.rootEl)
+		this.appendEl.appendChild(this.rootEl)
 		setTimeout(() => this.rootEl.classList.add('active'))
 		setTimeout(() => this.destroy(), this.timeout)
 	}
 
 	destroy() {
-		document.body.removeChild(this.rootEl)
+		this.appendEl.removeChild(this.rootEl)
 	}
 }
 
@@ -58,7 +59,7 @@ export const notification = {
 	error(message, timeout) {
 		new ELem(message, 'error', timeout).append()
 	}
-	// TODO warning, info?
+	// TODO warning, info, default??
 }
 
 export default (Vue) => Vue.prototype.$notification = notification
