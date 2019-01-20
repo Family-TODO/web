@@ -3,7 +3,8 @@
 		class="user"
 		@click="onClick"
 	>
-		{{ user.name || user.login }}
+		<BaseIcon name="face" />
+		<span class="user__name">{{ user.name }}</span>
 	</div>
 </template>
 
@@ -25,12 +26,16 @@ export default {
 
 <style lang="scss" scoped>
 .user {
+	display: flex;
+	align-items: center;
 	padding: 5px 10px;
 	margin-bottom: 10px;
-	font-size: .9rem;
+	font-size: .8rem;
 	white-space: nowrap;
 	overflow: hidden;
-	text-overflow: ellipsis;
 	cursor: pointer;
+	> span {
+		margin-left: 10px;
+	}
 }
 </style>

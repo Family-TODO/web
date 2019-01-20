@@ -2,20 +2,20 @@
 	<div class="page">
 		<TopBar
 			title="Settings"
-			:loading="loadingUsers"
-			@right="fetchUsers"
+			:loading="loadingProfile"
+			right-icon="edit"
+			@right="onClickRight"
 		/>
 		<main>
-			<section class="top">
-				<BaseButton @click="onClickProfile">
-					Profile
-				</BaseButton>
+			<section class="profile">
+				<h3 class="section-title">Profile</h3>
+				<UserItem :user="currentUser" />
 			</section>
-			<section class="center">
-				<span>Users</span>
-				<Users v-model="showAll" />
+			<section class="users">
+				<h3 class="section-title">Family</h3>
+				<Users expect-me />
 			</section>
-			<section class="bottom">
+			<section class="action">
 				<BaseButton
 					:loading="loadingProfile"
 					class="btn-logout"
@@ -29,64 +29,52 @@
 </template>
 
 <script>
+import UserItem from '@/components/users/Item'
 import Users from '@/components/users/Index'
 import TopBar from '@/components/TopBar'
 
 export default {
 	components: {
-		Users, TopBar
-	},
-	data() {
-		return {
-			showAll: false
-		}
+		Users, UserItem, TopBar
 	},
 	computed: {
+		currentUser() {
+			return this.$store.state.profile.user
+		},
 		users() {
 			return this.$store.state.users.list
-		},
-		loadingUsers() {
-			return this.$store.state.users.loading
 		},
 		loadingProfile() {
 			return this.$store.state.profile.loading
 		}
 	},
-	mounted() {
-		if (!this.users.length) {
-			this.fetchUsers()
-		}
-	},
 	methods: {
-		fetchUsers() {
-			this.showAll = false
-			return this.$store.dispatch('users/fetchList')
+		onClickRight() {
+			// TODO Go to edit profile page (or dialog?)
 		},
 		logout() {
 			this.$store.dispatch('profile/logout')
-		},
-		onClickProfile() {
-			this.$router.push({ name: 'profile' })
 		}
 	}
 }
 </script>
 
 <style lang="scss" scoped>
-.top, .center, .bottom {
-	padding: 20px;
+section {
+	padding: 15px 20px;
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
 }
 
-.center {
-	background: rgba(0, 0, 0, .3);
-	> span {
-		display: block;
-		font-size: 1rem;
-		font-weight: bold;
-		margin-bottom: 10px;
-		padding-bottom: 5px;
-		border-bottom: 1px solid;
-		color: rgba(255, 255, 255, .87);
-	}
+.section-title {
+	font-size: .9rem;
+	margin-bottom: 15px;
+}
+
+.action {
+	text-align: center;
+}
+
+.btn-logout {
+	width: 100%;
 }
 </style>
