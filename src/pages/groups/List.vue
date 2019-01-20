@@ -7,7 +7,8 @@
 			@right="fetchGroups"
 		/>
 		<main>
-			<Groups />
+			<!--TODO Pagination-->
+			<Groups :groups="groups" />
 			<BaseButton
 				icon
 				@click="onClickCreate"
@@ -28,7 +29,10 @@ export default {
 	},
 	computed: {
 		groups() {
-			return this.$store.state.groups.list
+			return Object.values(this.$store.state.groups.list)
+				.sort((a, b) => {
+					return new Date(b.updated_at) - new Date(a.updated_at)
+				})
 		},
 		loading() {
 			return this.$store.state.groups.loading

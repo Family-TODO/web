@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const state = {
-	list: [],
+	list: {},
 	loading: false
 }
 
@@ -9,8 +9,8 @@ const mutations = {
 	SET_GROUPS(state, arr) {
 		state.list = arr
 	},
-	APPEND_GROUP(state, obj) {
-		state.list.unshift(obj)
+	ADD_GROUP(state, obj) {
+		state.list[obj.id] = obj
 	},
 	SET_LOADING(state, toggle) {
 		state.loading = toggle
@@ -25,8 +25,14 @@ const actions = {
 			params
 		})
 			.then(res => {
+				const groups = {}
+
+				res.data.groups.forEach(group => {
+					groups[group.id] = group
+				})
+
 				commit('SET_LOADING', false)
-				commit('SET_GROUPS', res.data.groups)
+				commit('SET_GROUPS', groups)
 			})
 			.catch(() => {
 				commit('SET_LOADING', false)

@@ -75,7 +75,7 @@ export default {
 
 			this.$axios.post('groups', validate.formData)
 				.then(res => {
-					this.$store.commit('groups/APPEND_GROUP', res.data.group)
+					this.$store.commit('groups/ADD_GROUP', res.data.group)
 					this.$router.push({ name: 'group', params: { id: res.data.group.id } })
 					this.loading = false
 				})

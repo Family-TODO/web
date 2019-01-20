@@ -1,9 +1,8 @@
 <template>
 	<div class="groups">
-		<!--TODO Pagination-->
 		<GroupItem
-			v-for="group in groups"
-			:key="group.id"
+			v-for="(group, key) in groups"
+			:key="key"
 			:group="group"
 		/>
 	</div>
@@ -16,9 +15,10 @@ export default {
 	components: {
 		GroupItem
 	},
-	computed: {
-		groups() {
-			return this.$store.state.groups.list
+	props: {
+		groups: {
+			type: [Object, Array],
+			default: () => {}
 		}
 	}
 }

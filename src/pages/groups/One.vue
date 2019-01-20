@@ -59,11 +59,10 @@ export default {
 	methods: {
 		async getCurrentGroup() {
 			const routeId = this.$route.params.id
+			const group = this.groups[routeId]
 
-			for (let group of this.groups) {
-				if (group.id === routeId) {
-					return group
-				}
+			if (group) {
+				return group
 			}
 
 			return await this.fetchGroup()
