@@ -7,6 +7,10 @@
     border: 0;
     max-width: 300px;
     width: 100%;
+    &::placeholder {
+      color: rgba(255, 255, 255, .7);
+      font-size: .8rem;
+    }
   }
   > label {
     display: block;

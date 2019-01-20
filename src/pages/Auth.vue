@@ -122,6 +122,11 @@ export default {
 	height: 100vh;
 	> .base-form {
 		padding: 20px;
+		/deep/ input,
+		/deep/ textarea,
+		button {
+			height: 40px;
+		}
 	}
 }
 </style>
