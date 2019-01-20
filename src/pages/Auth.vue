@@ -7,8 +7,8 @@
 		>
 			<BaseInput
 				ref="login"
-				placeholder="Login"
 				v-model="login"
+				placeholder="Login"
 			/>
 			<BaseInput
 				ref="password"

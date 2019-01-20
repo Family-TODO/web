@@ -1,7 +1,7 @@
 <template>
 	<div class="tasks">
 		<!--<BaseButton @click="onClickDelete">-->
-			<!--Delete-->
+		<!--Delete-->
 		<!--</BaseButton>-->
 		Tasks - {{ this.$route.params.id }}
 	</div>

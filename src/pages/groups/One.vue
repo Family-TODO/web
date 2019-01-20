@@ -4,11 +4,13 @@
 			:title="group ? group.name : 'Loading..'"
 			right-icon="more_vert"
 			:right-click="onClickRight"
-			:loading="loading" />
+			:loading="loading"
+		/>
 		<main>
 			<Tasks
 				v-if="group"
-				:group="group" />
+				:group="group"
+			/>
 		</main>
 	</div>
 </template>
@@ -18,14 +20,14 @@ import Tasks from '@/components/tasks/Index'
 import TopBar from '@/components/TopBar'
 
 export default {
+	components: {
+		Tasks, TopBar
+	},
 	data() {
 		return {
 			loading: false,
 			group: null
 		}
-	},
-	components: {
-		Tasks, TopBar
 	},
 	computed: {
 		groups() {
