@@ -1,4 +1,41 @@
 .base-modal {
   position: fixed;
   top: 45px;
+  width: 100%;
+  height: calc(100% - 45px);
+  overflow-y: auto;
+  background: rgba(0, 0, 0, .1);
+  padding: 20px;
+}
+
+// animation
+
+.base-modal-enter-active {
+  transition: .2s;
+  > .base-modal__content {
+    transition: .2s;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.base-modal-enter-to {
+  > .base-modal__content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.base-modal-leave-active {
+  transition: .2s;
+  > .base-modal__content {
+    transition: .2s;
+  }
+}
+
+.base-modal-leave-to {
+  > .base-modal__content {
+    opacity: 0;
+    transform: translateY(10px);
+  }
 }

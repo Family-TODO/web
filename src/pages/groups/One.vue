@@ -2,15 +2,25 @@
 	<div class="page">
 		<TopBar
 			:title="group ? group.name : 'Loading..'"
-			right-icon="more_vert"
-			:right-click="onClickRight"
+			:right-icon="modal ? 'close' : 'more_vert'"
 			:loading="loading"
+			@right="onClickRight"
 		/>
 		<main>
-			<Tasks
-				v-if="group"
-				:group="group"
-			/>
+			<template v-if="group">
+				<BaseModal v-model="modal">
+					<!--TODO Group-->
+					<div
+						v-if="group.description"
+						class="group-description">
+						<BaseIcon name="description" /> <span>{{ group.description }}</span>
+					</div>
+				</BaseModal>
+				<Tasks
+					v-if="!modal"
+					:group="group"
+				/>
+			</template>
 		</main>
 	</div>
 </template>
@@ -26,6 +36,7 @@ export default {
 	data() {
 		return {
 			loading: false,
+			modal: false,
 			group: null
 		}
 	},
@@ -35,30 +46,27 @@ export default {
 		}
 	},
 	async created() {
-		await this.getCurrentGroup()
+		this.loading = true
+		const group = await this.getCurrentGroup()
+
+		if (!group) {
+			this.$router.push({ name: 'dashboard' })
+		} else {
+			this.group = group
+			this.loading = false
+		}
 	},
 	methods: {
 		async getCurrentGroup() {
 			const routeId = this.$route.params.id
-			this.loading = true
 
 			for (let group of this.groups) {
 				if (group.id === routeId) {
-					this.group = group
-					this.loading = false
-					return
+					return group
 				}
 			}
 
-			const res = await this.fetchGroup()
-
-			if (!res) {
-				this.$router.push({ name: 'dashboard' })
-			} else {
-				this.group = res
-			}
-
-			this.loading = false
+			return await this.fetchGroup()
 		},
 		async fetchGroup() {
 			return await this.$axios.get(`/groups/${this.$route.params.id}`)
@@ -66,7 +74,7 @@ export default {
 				.catch(() => null)
 		},
 		onClickRight() {
-			// this.$router.push({ name: '' }) TODO
+			this.modal = !this.modal
 		}
 	}
 }

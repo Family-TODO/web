@@ -4,7 +4,9 @@
 			v-if="value"
 			class="base-modal"
 		>
-			<slot />
+			<div class="base-modal__content">
+				<slot />
+			</div>
 		</div>
 	</transition>
 </template>
