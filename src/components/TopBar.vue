@@ -30,6 +30,7 @@
 					<BaseIcon :name="rightIcon" />
 				</slot>
 			</div>
+			<BaseLoading v-if="loading" />
 		</header>
 	</transition>
 </template>
@@ -100,6 +101,9 @@ export default {
 	padding: 5px 0;
 	background-color: rgba(0, 0, 0, .1);
 	box-shadow: 0 1px 10px 0 rgba(37, 28, 28, 0.5);
+	> .base-loading {
+		position: fixed;
+	}
 }
 
 .top-bar__left, .top-bar__right {

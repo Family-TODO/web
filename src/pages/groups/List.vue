@@ -8,7 +8,6 @@
 		/>
 		<main>
 			<Groups />
-			<BaseLoading v-if="loading" />
 			<BaseButton
 				icon
 				@click="onClickCreate"
