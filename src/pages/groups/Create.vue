@@ -2,21 +2,17 @@
 	<div class="page">
 		<TopBar
 			title="Create a group"
-			left-icon="settings"
-			:left-click="onClickLeft"
 			:loading="loading"
 			right-disable
 		/>
 		<main>
 			<BaseForm
 				:loading="loading"
-				autofocus
 				@submit="onSubmit"
 			>
 				<BaseInput
 					v-model="form.name.value"
 					label="Name"
-					autofocus
 				/>
 				<BaseTextarea
 					v-model="form.description.value"
@@ -86,9 +82,6 @@ export default {
 				.catch(() => {
 					this.loading = false
 				})
-		},
-		onClickLeft() {
-			this.$router.push({ name: 'groups' })
 		}
 	}
 }

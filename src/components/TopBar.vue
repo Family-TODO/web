@@ -98,8 +98,8 @@ export default {
 	justify-content: center;
 	height: 45px;
 	padding: 5px 0;
-	background-color: rgba(0, 0, 0, .2);
-	border-bottom: 1px solid #2c2c4d;
+	background-color: rgba(0, 0, 0, .1);
+	box-shadow: 0 1px 10px 0 rgba(37, 28, 28, 0.5);
 }
 
 .top-bar__left, .top-bar__right {

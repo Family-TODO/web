@@ -7,11 +7,13 @@
 		>
 			<BaseInput
 				ref="login"
+				placeholder="Login"
 				v-model="login"
 			/>
 			<BaseInput
 				ref="password"
 				v-model="password"
+				placeholder="Password"
 				type="password"
 			/>
 			<BaseButton :loading="loading">

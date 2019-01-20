@@ -68,13 +68,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$colorSecondary: #b6b6b6;
+
 .group {
-	background: rgba(0, 0, 0, .1);
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
 	font-size: .9rem;
 	> a {
 		display: block;
 		padding: 10px 15px;
-		border-bottom: 1px solid rgba(0, 0, 0, .2);
 	}
 	&:first-child {
 		margin-top: 0;
@@ -109,7 +110,7 @@ export default {
 .group__header-time {
 	white-space: nowrap;
 	font-size: .6rem;
-	color: #b6b6b6;
+	color: $colorSecondary;
 }
 
 // Footer
@@ -119,7 +120,7 @@ export default {
 	align-items: center;
 	justify-content: flex-end;
 	margin-top: 8px;
-	color: #a6a6a6;
+	color: $colorSecondary;
 	font-size: .8rem;
 	> .base-checkbox {
 		font-size: .6rem;
