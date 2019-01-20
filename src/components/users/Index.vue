@@ -1,17 +1,12 @@
 <template>
 	<div class="users">
-		<transition-group
-			tag="div"
-			name="list-animate"
-			class="users-list"
-			appear
-		>
+		<div class="users-list">
 			<UserItem
 				v-for="user in users"
 				:key="user.id"
 				:user="user"
 			/>
-		</transition-group>
+		</div>
 		<div
 			v-if="!showAll"
 			class="show-more"

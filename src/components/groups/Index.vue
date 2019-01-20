@@ -1,17 +1,12 @@
 <template>
-	<transition-group
-		tag="div"
-		name="list-animate"
-		class="groups"
-		appear
-	>
+	<div class="groups">
 		<!--TODO Pagination-->
 		<GroupItem
 			v-for="group in groups"
 			:key="group.id"
 			:group="group"
 		/>
-	</transition-group>
+	</div>
 </template>
 
 <script>

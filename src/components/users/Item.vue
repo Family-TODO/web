@@ -1,11 +1,16 @@
 <template>
-	<div
-		class="user"
-		@click="onClick"
+	<transition
+		name="list-animate"
+		appear
 	>
-		<BaseIcon name="face" />
-		<span class="user__name">{{ user.name }}</span>
-	</div>
+		<div
+			class="user"
+			@click="onClick"
+		>
+			<BaseIcon name="face" />
+			<span class="user__name">{{ user.name }}</span>
+		</div>
+	</transition>
 </template>
 
 <script>

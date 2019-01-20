@@ -1,39 +1,44 @@
 <template>
-	<article class="group">
-		<router-link :to="{ name: 'group', params: { id: group.id } }">
-			<header class="group__header">
-				<div class="group__header-name">
-					<span>{{ group.name }}</span>
-				</div>
-				<div class="group__header-time">
-					{{ time }}
-				</div>
-			</header>
-			<footer class="group__footer">
-				<div
-					v-if="lastTask"
-					class="group__footer-task"
-				>
-					<BaseCheckbox
-						:value="lastTask.is_done"
-						only-view
-					/>
-					<div class="group__footer-task__name">
-						{{ lastTask.name }}
+	<transition
+		name="list-animate"
+		appear
+	>
+		<div class="group">
+			<router-link :to="{ name: 'group', params: { id: group.id } }">
+				<header class="group__header">
+					<div class="group__header-name">
+						<span>{{ group.name }}</span>
 					</div>
-				</div>
-				<BaseIcon
-					v-if="group.creator_id === currentUser.id"
-					name="star"
-					class="color_yellow"
-				/>
-				<div class="group__footer-users">
-					<span>{{ group.users.length }}</span>
-					<BaseIcon name="people" />
-				</div>
-			</footer>
-		</router-link>
-	</article>
+					<div class="group__header-time">
+						{{ time }}
+					</div>
+				</header>
+				<footer class="group__footer">
+					<div
+						v-if="lastTask"
+						class="group__footer-task"
+					>
+						<BaseCheckbox
+							:value="lastTask.is_done"
+							only-view
+						/>
+						<div class="group__footer-task__name">
+							{{ lastTask.name }}
+						</div>
+					</div>
+					<BaseIcon
+						v-if="group.creator_id === currentUser.id"
+						name="star"
+						class="color_yellow"
+					/>
+					<div class="group__footer-users">
+						<span>{{ group.users.length }}</span>
+						<BaseIcon name="people" />
+					</div>
+				</footer>
+			</router-link>
+		</div>
+	</transition>
 </template>
 
 <script>
