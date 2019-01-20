@@ -35,7 +35,7 @@ export default {
 		return {
 			form: {
 				login: {
-					value: '',
+					value: 'admin',
 					error: {
 						has: false,
 						text: ''
@@ -46,7 +46,7 @@ export default {
 					]
 				},
 				password: {
-					value: '',
+					value: 'admin123',
 					error: {
 						has: false,
 						text: ''

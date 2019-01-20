@@ -9,13 +9,17 @@
 		<main>
 			<section class="profile">
 				<h3 class="section-title">Profile</h3>
-				<UserItem :user="currentUser" />
+				<UserItem
+					v-if="currentUser"
+					:user="currentUser" />
 			</section>
 			<section class="users">
 				<h3 class="section-title">Family</h3>
 				<Users expect-me />
 			</section>
-			<section class="action">
+			<!--TODO Section - choose background-->
+			<!--TODO Section choose display success/error notification from ajax-->
+			<section class="logout">
 				<BaseButton
 					:loading="loadingProfile"
 					class="btn-logout"
@@ -70,7 +74,7 @@ section {
 	margin-bottom: 15px;
 }
 
-.action {
+.logout {
 	text-align: center;
 }
 

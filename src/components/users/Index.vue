@@ -5,6 +5,7 @@
 				v-for="user in users"
 				:key="user.id"
 				:user="user"
+				@choose="onChooseUser"
 			/>
 		</div>
 		<div
@@ -46,6 +47,10 @@ export default {
 		users() {
 			let users = this.$store.state.users.list
 
+			if (!users || !users.length) {
+				return []
+			}
+
 			if (this.expectMe) {
 				users = users.filter(user => user.id !== this.currentUser.id)
 			}
@@ -64,6 +69,9 @@ export default {
 		fetchUsers() {
 			this.showAll = false
 			return this.$store.dispatch('users/fetchList')
+		},
+		onChooseUser(obj) {
+			this.$emit('choose', obj)
 		},
 		onClickShowAll() {
 			this.showAll = true

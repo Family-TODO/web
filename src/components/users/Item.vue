@@ -23,7 +23,7 @@ export default {
 	},
 	methods: {
 		onClick() {
-			// this.$router.push({ name: 'user', params: { id: this.user.id } })
+			this.$emit('choose', this.user)
 		}
 	}
 }

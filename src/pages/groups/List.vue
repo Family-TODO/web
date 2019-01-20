@@ -6,7 +6,7 @@
 			:loading="loading"
 			@right="fetchGroups"
 		/>
-		<main>
+		<main ref="main">
 			<!--TODO Pagination-->
 			<Groups :groups="groups" />
 			<BaseButton
@@ -38,6 +38,9 @@ export default {
 			return this.$store.state.groups.loading
 		}
 	},
+	mounted() {
+		this.$refs.main.addEventListener('scroll', this.onScroll)
+	},
 	methods: {
 		fetchGroups() {
 			this.$store.dispatch('groups/fetchList')
@@ -47,6 +50,12 @@ export default {
 		},
 		onClickCreate() {
 			this.$router.push({ name: 'groups-create' })
+		},
+		onScroll() {
+			const main = this.$refs.main
+
+			// TODO Make directive (also use in tasks)
+			console.log('-->', main.scrollHeight - main.clientHeight - main.scrollTop)
 		}
 	}
 }
