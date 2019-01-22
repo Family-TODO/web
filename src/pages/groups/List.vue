@@ -8,6 +8,7 @@
 		/>
 		<main ref="main">
 			<!--TODO Pagination-->
+			<!--TODO Store scrollOffset-->
 			<Groups :groups="groups" />
 			<BaseButton
 				icon

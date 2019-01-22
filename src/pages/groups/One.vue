@@ -7,20 +7,10 @@
 			@right="onClickRight"
 		/>
 		<main>
-			<template v-if="group">
-				<BaseModal v-model="modal">
-					<!--TODO Group-->
-					<div
-						v-if="group.description"
-						class="group-description">
-						<BaseIcon name="description" /> <span>{{ group.description }}</span>
-					</div>
-				</BaseModal>
-				<Tasks
-					v-if="!modal"
-					:group="group"
-				/>
-			</template>
+			<Tasks
+				v-if="group"
+				:group="group"
+			/>
 		</main>
 	</div>
 </template>
@@ -73,7 +63,7 @@ export default {
 				.catch(() => null)
 		},
 		onClickRight() {
-			this.modal = !this.modal
+			this.$store.commit('modals/SET_GROUP', this.group)
 		}
 	}
 }

@@ -5,6 +5,10 @@ import router from './router'
 import store from '@/store'
 
 router.beforeEach((to, from, next) => {
+	if (store.state.modals.isOpen) {
+		store.commit('modals/CLOSE_MODAL')
+	}
+
 	if (to.path === '/') {
 		next({ name: 'groups' })
 	}
