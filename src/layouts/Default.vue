@@ -6,8 +6,8 @@
 		<RouterView :class="{ 'modal-open': dialogIsOpen }" />
 		<div
 			id="dialogs"
-			v-show="dialogIsOpen">
-			<GroupDetailModal v-if="group" />
+			v-if="dialogIsOpen">
+			<GroupDetailModal />
 		</div>
 	</div>
 </template>
@@ -22,9 +22,6 @@ export default {
 	computed: {
 		dialogIsOpen() {
 			return this.$store.state.modals.isOpen
-		},
-		group() {
-			return this.$store.state.modals.group
 		}
 	},
 	mounted() {
@@ -34,14 +31,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#dialogs {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
 .modal-open {
 	filter: blur(5px);
 }

@@ -1,6 +1,7 @@
 <template>
 	<BaseModal
-		v-model="modal"
+		v-if="group"
+		value
 		class="group-detail">
 		<!--TODO BaseGroup-->
 		<div
@@ -13,22 +14,9 @@
 
 <script>
 export default {
-	data() {
-		return {
-			modal: false
-		}
-	},
-	mounted() {
-		this.modal = true
-	},
 	computed: {
 		group() {
 			return this.$store.state.modals.group
-		}
-	},
-	watch: {
-		group(val) {
-			this.modal = !!val
 		}
 	}
 }
