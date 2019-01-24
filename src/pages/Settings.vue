@@ -13,7 +13,9 @@
 					v-if="currentUser"
 					:user="currentUser" />
 			</section>
-			<section class="users">
+			<section
+				v-if="hasUsers"
+				class="users">
 				<h3 class="section-title">Family</h3>
 				<Users expect-me />
 			</section>
@@ -45,8 +47,8 @@ export default {
 		currentUser() {
 			return this.$store.state.profile.user
 		},
-		users() {
-			return this.$store.state.users.list
+		hasUsers() {
+			return Object.keys(this.$store.state.users.list).length > 0
 		},
 		loadingProfile() {
 			return this.$store.state.profile.loading
@@ -54,7 +56,7 @@ export default {
 	},
 	methods: {
 		onClickRight() {
-			// TODO Go to edit profile page (or dialog?)
+			// TODO Open profile page (edit)
 		},
 		logout() {
 			this.$store.dispatch('profile/logout')

@@ -3,13 +3,13 @@
 		name="list-animate"
 		appear
 	>
-		<div
+		<BaseGroup
+			icon="face"
 			class="user"
 			@click="onClick"
 		>
-			<BaseIcon name="face" />
-			<span class="user__name">{{ user.name }}</span>
-		</div>
+			{{ user.name }}
+		</BaseGroup>
 	</transition>
 </template>
 
@@ -23,7 +23,7 @@ export default {
 	},
 	methods: {
 		onClick() {
-			this.$emit('choose', this.user)
+			this.$store.commit('modals/SET_USER', this.user)
 		}
 	}
 }
@@ -31,8 +31,6 @@ export default {
 
 <style lang="scss" scoped>
 .user {
-	display: flex;
-	align-items: center;
 	padding: 5px 10px;
 	margin-bottom: 10px;
 	font-size: .8rem;
