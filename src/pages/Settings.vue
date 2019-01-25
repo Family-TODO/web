@@ -43,12 +43,23 @@ export default {
 	components: {
 		Users, UserItem, TopBar
 	},
+	mounted() {
+		if (!this.users.length) {
+			this.fetchUsers()
+		}
+	},
 	computed: {
-		currentUser() {
-			return this.$store.state.profile.user
+		users() {
+			return this.$store.state.users.list
 		},
 		hasUsers() {
-			return Object.keys(this.$store.state.users.list).length > 0
+			return this.users.length > 0
+		},
+		fetchUsers() {
+			return this.$store.dispatch('users/fetchList')
+		},
+		currentUser() {
+			return this.$store.state.profile.user
 		},
 		loadingProfile() {
 			return this.$store.state.profile.loading

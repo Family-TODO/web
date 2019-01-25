@@ -34,11 +34,6 @@ export default {
 			showAll: false
 		}
 	},
-	mounted() {
-		if (!this.users.length) {
-			this.fetchUsers()
-		}
-	},
 	computed: {
 		currentUser() {
 			return this.$store.state.profile.user
@@ -65,10 +60,6 @@ export default {
 		}
 	},
 	methods: {
-		fetchUsers() {
-			this.showAll = false
-			return this.$store.dispatch('users/fetchList')
-		},
 		onClickShowAll() {
 			this.showAll = true
 		}
