@@ -19,12 +19,11 @@
 						class="group__footer-task"
 					>
 						<BaseCheckbox
-							:value="lastTask.is_done"
-							only-view
-						/>
-						<div class="group__footer-task__name">
+							:value="lastTask.done_time"
+							size="small"
+							only-view>
 							{{ lastTask.name }}
-						</div>
+						</BaseCheckbox>
 					</div>
 					<BaseIcon
 						v-if="group.creator_id === currentUser.id"
@@ -73,7 +72,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$colorSecondary: #b6b6b6;
+$colorSecondary: #c5c5c5;
 
 .group {
 	border-bottom: 1px solid rgba(0, 0, 0, .1);
@@ -126,7 +125,7 @@ $colorSecondary: #b6b6b6;
 	justify-content: flex-end;
 	margin-top: 8px;
 	color: $colorSecondary;
-	font-size: .8rem;
+	font-size: .7rem;
 	> .base-checkbox {
 		font-size: .6rem;
 		margin-left: 3px;
@@ -149,16 +148,10 @@ $colorSecondary: #b6b6b6;
 .group__footer-task {
 	display: flex;
 	align-items: center;
-	width: 100%;
-	> .base-checkbox {
-		margin-right: 5px;
-	}
-}
-
-.group__footer-task__name {
-	width: 100%;
+	flex: 1;
+	flex-basis: auto;
+	margin-right: 15px;
 	white-space: nowrap;
 	overflow: hidden;
-	text-overflow: ellipsis;
 }
 </style>

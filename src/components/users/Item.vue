@@ -8,7 +8,10 @@
 			class="user"
 			@click="onClick"
 		>
-			{{ user.name }}
+			<span>{{ user.name }}</span>
+			<BaseIcon
+				v-if="user.is_admin"
+				name="star_border" />
 		</BaseGroup>
 	</transition>
 </template>
@@ -33,12 +36,20 @@ export default {
 .user {
 	padding: 5px 10px;
 	margin-bottom: 10px;
-	font-size: .8rem;
 	white-space: nowrap;
 	overflow: hidden;
 	cursor: pointer;
 	> span {
 		margin-left: 10px;
+	}
+	/deep/ .base-group__content {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		> span {
+			flex: 1;
+			flex-basis: auto;
+		}
 	}
 }
 </style>

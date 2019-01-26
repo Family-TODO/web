@@ -8,16 +8,18 @@
 			id="dialogs"
 			v-if="dialogIsOpen">
 			<GroupDetailModal />
+			<UserEditModal />
 		</div>
 	</div>
 </template>
 
 <script>
 import GroupDetailModal from '@/components/modals/GroupDetail'
+import UserEditModal from '@/components/modals/UserEdit'
 
 export default {
 	components: {
-		GroupDetailModal
+		GroupDetailModal, UserEditModal
 	},
 	computed: {
 		dialogIsOpen() {

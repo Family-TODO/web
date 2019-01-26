@@ -1,16 +1,25 @@
 <template>
 	<div
-		:class="['base-checkbox', {
-			'base-checkbox_checked': value,
-			'base-checkbox_only_view': onlyView
+		:class="['base-checkbox', `base-checkbox_size_${size}`]"
+		v-on="listeners">
+		<div
+			:class="['base-checkbox__input', {
+			'base-checkbox__input_checked': value,
+			'base-checkbox__input_only_view': onlyView
 		}]"
-		v-on="listeners"
-	/>
+		/>
+		<div
+			v-if="hasDefaultSlot"
+			class="base-checkbox__content">
+			<slot />
+		</div>
+	</div>
 </template>
 
 <script>
 export default {
 	name: 'BaseCheckbox',
+	inheritAttrs: false,
 	props: {
 		value: {
 			type: Boolean,
@@ -19,6 +28,13 @@ export default {
 		onlyView: {
 			type: Boolean,
 			default: false
+		},
+		size: {
+			type: String,
+			default: 'medium',
+			validator: (val) => {
+				return ~['small', 'medium'].indexOf(val)
+			}
 		}
 	},
 	computed: {
@@ -32,6 +48,9 @@ export default {
 					this.$emit('click', evt)
 				}
 			}
+		},
+		hasDefaultSlot() {
+			return !!this.$slots.default
 		}
 	}
 }

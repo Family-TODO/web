@@ -55,9 +55,6 @@ export default {
 		hasUsers() {
 			return this.users.length > 0
 		},
-		fetchUsers() {
-			return this.$store.dispatch('users/fetchList')
-		},
 		currentUser() {
 			return this.$store.state.profile.user
 		},
@@ -66,8 +63,11 @@ export default {
 		}
 	},
 	methods: {
+		fetchUsers() {
+			this.$store.dispatch('users/fetchList')
+		},
 		onClickRight() {
-			// TODO Open profile page (edit)
+			this.$store.commit('modals/SET_USER', this.currentUser)
 		},
 		logout() {
 			this.$store.dispatch('profile/logout')

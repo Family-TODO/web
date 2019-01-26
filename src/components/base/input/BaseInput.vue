@@ -21,12 +21,16 @@ import inputMixin from '@/mixins/input'
 
 export default {
 	name: 'BaseInput',
+	inheritAttrs: false,
 	mixins: [
 		inputMixin
 	],
-	inheritAttrs: false,
 	props: {
 		value: {
+			type: String,
+			default: ''
+		},
+		label: {
 			type: String,
 			default: ''
 		}
