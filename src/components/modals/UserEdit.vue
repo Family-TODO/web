@@ -1,27 +1,30 @@
 <template>
 	<BaseModal
-		v-if="user"
 		value
 		class="user-edit">
-		<h1>{{ user.name || user.login }}</h1>
+		<h1>{{ data.login }}</h1>
 		<BaseForm @submit="onSubmit">
 			<BaseInput
 				v-model="form.name"
 				label="Name" />
-			<BaseInput
-				v-model="form.login"
-				label="Login" />
 			<BaseCheckbox
 				v-model="form.is_admin"
-				v-if="currentUser.is_admin && currentUser.id !== user.id">
+				v-if="currentUser.is_admin && currentUser.id !== data.id">
 				Admin
 			</BaseCheckbox>
+			<BaseButton>Save</BaseButton>
 		</BaseForm>
 	</BaseModal>
 </template>
 
 <script>
 export default {
+	props: {
+		data: {
+			type: Object,
+			required: true
+		}
+	},
 	data() {
 		return {
 			form: {},
@@ -31,13 +34,10 @@ export default {
 	computed: {
 		currentUser() {
 			return this.$store.state.profile.user
-		},
-		user() {
-			return this.$store.state.modals.user
 		}
 	},
 	mounted() {
-		if (this.currentUser.id === this.user.id || this.currentUser.isAdmin) {
+		if (this.currentUser.id === this.data.id || this.currentUser.isAdmin) {
 			this.fetchTokens()
 		}
 	},
@@ -49,11 +49,14 @@ export default {
 				})
 		},
 		onSubmit() {
-			this.$axios.post('')
+			// this.$axios.post(`users/${this.data.id}`)
+			// 	.then(res => {
+			// 		// TODO
+			// 	})
 		}
 	},
 	watch: {
-		user: {
+		data: {
 			handler(obj) {
 				if (obj) {
 					this.form = { ...obj }

@@ -67,7 +67,7 @@ export default {
 			this.$store.dispatch('users/fetchList')
 		},
 		onClickRight() {
-			this.$store.commit('modals/SET_USER', this.currentUser)
+			this.$store.commit('modals/OPEN_USER_EDIT', this.currentUser)
 		},
 		logout() {
 			this.$store.dispatch('profile/logout')

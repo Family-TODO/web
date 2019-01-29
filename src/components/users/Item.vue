@@ -26,7 +26,7 @@ export default {
 	},
 	methods: {
 		onClick() {
-			this.$store.commit('modals/SET_USER', this.user)
+			this.$store.commit('modals/OPEN_USER_EDIT', this.user)
 		}
 	}
 }

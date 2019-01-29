@@ -1,22 +1,22 @@
 <template>
 	<BaseModal
-		v-if="group"
 		value
 		class="group-detail">
 		<!--TODO BaseGroup-->
 		<div
-			v-if="group.description"
+			v-if="data.description"
 			class="group-description">
-			<BaseIcon name="description" /> <span>{{ group.description }}</span>
+			<BaseIcon name="description" /> <span>{{ data.description }}</span>
 		</div>
 	</BaseModal>
 </template>
 
 <script>
 export default {
-	computed: {
-		group() {
-			return this.$store.state.modals.group
+	props: {
+		data: {
+			type: Object,
+			required: true
 		}
 	}
 }

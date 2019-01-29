@@ -1,21 +1,20 @@
 const state = {
-	isOpen: false,
-	group: null
+	component: '',
+	data: null
 }
 
 const mutations = {
-	SET_GROUP(state, obj) {
-		state.isOpen = true
-		state.group = obj
+	OPEN_GROUP_DETAIL(state, data) {
+		state.component = 'GroupDetailModal'
+		state.data = data
 	},
-	SET_USER(state, obj) {
-		state.isOpen = true
-		state.user = obj
+	OPEN_USER_EDIT(state, data) {
+		state.component = 'UserEditModal'
+		state.data = data
 	},
 	CLOSE_MODAL(state) {
-		state.isOpen = false
-		state.group = null
-		state.user = null
+		state.component = ''
+		state.data = null
 	}
 }
 

@@ -51,11 +51,7 @@ export default {
 			const routeId = this.$route.params.id
 			const group = this.groups[routeId]
 
-			if (group) {
-				return group
-			}
-
-			return await this.fetchGroup()
+			return group || await this.fetchGroup()
 		},
 		async fetchGroup() {
 			return await this.$axios.get(`/groups/${this.$route.params.id}`)
@@ -63,7 +59,7 @@ export default {
 				.catch(() => null)
 		},
 		onClickRight() {
-			this.$store.commit('modals/SET_GROUP', this.group)
+			this.$store.commit('modals/OPEN_GROUP_DETAIL', this.group)
 		}
 	}
 }

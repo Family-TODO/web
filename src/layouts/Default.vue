@@ -3,12 +3,13 @@
 		id="layout"
 		class="layout_default"
 	>
-		<RouterView :class="{ 'modal-open': dialogIsOpen }" />
+		<RouterView :class="{ 'modal-open': modalIsOpen }" />
 		<div
 			id="dialogs"
-			v-if="dialogIsOpen">
-			<GroupDetailModal />
-			<UserEditModal />
+			v-if="modalIsOpen">
+			<component
+				:is="modalComponent"
+				:data="modalData" />
 		</div>
 	</div>
 </template>
@@ -16,14 +17,19 @@
 <script>
 import GroupDetailModal from '@/components/modals/GroupDetail'
 import UserEditModal from '@/components/modals/UserEdit'
+import { mapState } from 'vuex'
 
 export default {
 	components: {
 		GroupDetailModal, UserEditModal
 	},
 	computed: {
-		dialogIsOpen() {
-			return this.$store.state.modals.isOpen
+		...mapState('modals', {
+			modalComponent: 'component',
+			modalData: 'data'
+		}),
+		modalIsOpen() {
+			return !!this.modalComponent
 		}
 	},
 	mounted() {
