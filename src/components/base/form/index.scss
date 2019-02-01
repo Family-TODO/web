@@ -1,0 +1,13 @@
+.base-form {
+  max-width: 300px;
+  margin: 0 auto;
+  > * {
+    margin-bottom: 15px;
+  }
+  label {
+    text-align: left;
+  }
+  .base-button {
+    width: 100%;
+  }
+}

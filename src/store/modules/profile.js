@@ -8,6 +8,7 @@ const STORE_TOKEN = 'token'
 const STORE_USER = 'user'
 
 const state = {
+	loading: false,
 	user: null
 }
 
@@ -15,8 +16,21 @@ const mutations = {
 	SET_USER(state, obj) {
 		state.user = obj
 	},
-	CLEAR_USER(state) {
+	SET_LOADING(state, toggle) {
+		state.loading = toggle
+	},
+	CLEAR_ALL(state) {
+		// Clear data from axios
+		axios.defaults.headers['Auth'] = null
+
+		// Clear data from localStorage
+		localStorage.removeItem(STORE_TOKEN)
+		localStorage.removeItem(STORE_USER)
+
+		// Clear data from store
 		state.user = null
+
+		router.push({ name: 'auth' })
 	}
 }
 
@@ -44,25 +58,37 @@ const actions = {
 			router.push({ name: 'auth' })
 		}
 	},
-	auth({ dispatch }, data) {
-		axios.post('auth', data)
-			.then(res => {
-				const data = res.data
+	auth({ dispatch, commit }, data) {
+		commit('SET_LOADING', true)
 
-				if (data && data.token) {
-					axios.defaults.headers['Auth'] = data.token
-					localStorage.setItem(STORE_TOKEN, data.token)
-					dispatch('getUser')
-				}
+		axios.post('auth', data)
+			.then(async res => {
+				axios.defaults.headers['Auth'] = res.data.token
+				localStorage.setItem(STORE_TOKEN, res.data.token)
+				await dispatch('getUser')
+				commit('SET_LOADING', false)
+			})
+			.catch(() => {
+				commit('SET_LOADING', false)
+			})
+	},
+	logout({ commit }) {
+		commit('SET_LOADING', true)
+
+		axios.post('auth/logout')
+			.then(() => {
+				commit('CLEAR_ALL')
+				commit('SET_LOADING', false)
+			})
+			.catch(() => {
+				commit('SET_LOADING', false)
 			})
 	},
 	getUser({ commit }) {
 		axios.get('auth/me')
 			.then(res => {
-				if (res.data && res.data.user) {
-					localStorage.setItem(STORE_USER, JSON.stringify(res.data.user))
-					commit('SET_USER', res.data.user)
-				}
+				localStorage.setItem(STORE_USER, JSON.stringify(res.data.user))
+				commit('SET_USER', res.data.user)
 			})
 	}
 }

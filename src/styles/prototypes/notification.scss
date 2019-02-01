@@ -1,0 +1,44 @@
+#notifications {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  user-select: none;
+}
+
+.base-notification {
+  display: flex;
+  align-items: center;
+  padding: 4px 15px 4px 10px;
+  min-width: 100px;
+  max-width: 180px;
+  background: rgba(0, 0, 0, .6);
+  opacity: 0;
+  font-weight: 600;
+  transition: .3s;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+  &:first-child {
+    opacity: 1;
+  }
+  &.success {
+    color: #4db871;
+  }
+  &.error {
+    color: #b84d4d;
+  }
+  > div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  > .base-icon {
+    margin-right: 5px;
+  }
+  + .active {
+    margin-top: 10px;
+    opacity: 1;
+  }
+}

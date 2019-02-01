@@ -1,3 +1,64 @@
 .base-button {
-  // TODO
+  outline: none;
+  background: none;
+  padding: 0;
+  height: 35px;
+  background: rgba(0, 0, 0, .4);
+  border: 0;
+  min-width: 150px;
+  max-width: 300px;
+  color: #fff;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.base-button_icon {
+  width: 40px;
+  height: 40px;
+  min-width: auto;
+  color: #fff;
+  line-height: 1;
+  font-size: 16px;
+}
+
+.base-button_round {
+  border-radius: 50%;
+}
+
+.base-button_loading {
+  pointer-events: none;
+  opacity: .7;
+}
+
+.base-button__loading {
+  display: inline-block;
+  position: relative;
+  height: 12px;
+  span {
+    position: absolute;
+    border: 1px solid #fff;
+    opacity: 1;
+    border-radius: 50%;
+    animation: ripple 1s cubic-bezier(0, .2, .8, 1) infinite;
+    &:nth-child(2) {
+      animation-delay: -0.5s;
+    }
+  }
+}
+
+@keyframes ripple {
+  0% {
+    top: 10px;
+    left: 9px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: -1px;
+    left: -1px;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+  }
 }

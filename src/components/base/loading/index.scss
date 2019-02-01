@@ -1,0 +1,45 @@
+.base-loading {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 45px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 45px);
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .2);
+  }
+  > svg {
+    position: relative;
+  }
+  rect {
+    fill: #fff;
+  }
+}
+
+// <transition>
+
+.base-loading-animate-enter-active {
+  transition: .5s;
+  opacity: 0;
+}
+
+.base-loading-animate-enter-to {
+  opacity: 1;
+}
+
+.base-loading-animate-leave-active {
+  transition: .25s;
+  opacity: 1;
+}
+
+.base-loading-animate-leave-to {
+  opacity: 0;
+}

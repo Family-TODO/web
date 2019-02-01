@@ -1,23 +1,36 @@
 <template>
-	<div
-		id="auth"
-		class="page"
-	>
-		<BaseInput v-model="form.login.value" />
-		<BaseInput
-			v-model="form.password.value"
-			type="password"
-		/>
-		<BaseButton @click="onClick" />
-		{{ form }}
-		Auth page
-	</div>
+	<main class="page">
+		<Logo />
+		<BaseForm
+			:loading="loading"
+			@submit="onSubmit"
+		>
+			<BaseInput
+				ref="login"
+				v-model="login"
+				placeholder="Login"
+			/>
+			<BaseInput
+				ref="password"
+				v-model="password"
+				placeholder="Password"
+				type="password"
+			/>
+			<BaseButton :loading="loading">
+				Login
+			</BaseButton>
+		</BaseForm>
+	</main>
 </template>
 
 <script>
 import ValidateForm from '@script/ValidateForm'
+import Logo from '@/components/Logo'
 
 export default {
+	components: {
+		Logo
+	},
 	data() {
 		return {
 			form: {
@@ -39,26 +52,81 @@ export default {
 						text: ''
 					},
 					validation: [
-						v => !!v || 'Password is empty'
+						v => !!v || 'Password is empty',
+						v => v.length >= 6 || 'Min length is 6'
 					]
 				}
 			}
 		}
 	},
+	computed: {
+		loading() {
+			return this.$store.state.profile.loading
+		},
+		login: {
+			get() {
+				return this.form.login.value
+			},
+			set(value) {
+				this.form.login.value = value
+			}
+		},
+		password: {
+			get() {
+				return this.form.password.value
+			},
+			set(value) {
+				this.form.password.value = value
+			}
+		}
+	},
+	mounted() {
+		this.$nextTick(() => {
+			this.updateFocus()
+		})
+	},
 	methods: {
-		onClick() {
+		onSubmit() {
 			const validate = new ValidateForm(this.form)
 
 			if (!validate.result) {
+				this.$notification.error('Validation error')
+				this.updateFocus()
 				return
 			}
 
-			const fd = new FormData
-			fd.set('login', this.form.login.value)
-			fd.set('password', this.form.password.value)
+			// Send request to the server
+			// And get the user
+			this.$store.dispatch('profile/auth', validate.formData)
+		},
+		/** @return Boolean */
+		updateFocus() {
+			for (let [key, item] of Object.entries(this.form)) {
+				if (!item.value || item.error.has) {
+					this.setFocus(key)
+					return true
+				}
+			}
 
-			this.$store.dispatch('profile/auth', fd)
+			return false
+		},
+		setFocus(type) {
+			this.$refs[type].$refs.input.focus()
 		}
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.page {
+	height: 100vh;
+	> .base-form {
+		padding: 20px;
+		/deep/ input,
+		/deep/ textarea,
+		button {
+			height: 40px;
+		}
+	}
+}
+</style>

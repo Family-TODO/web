@@ -1,3 +1,9 @@
+@import "../../../styles/mixins";
+
 .base-input {
-  // TODO
+  @include baseDefaultStyles();
+  > input {
+    padding: 0 15px;
+    height: 35px;
+  }
 }

@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
 		<RouterView />
+		<div id="notifications" />
 	</div>
 </template>
 
@@ -13,7 +14,7 @@ export default {
 	},
 	watch: {
 		user(val) {
-			this.$router.push({ name: val ? 'dashboard' : 'auth' })
+			this.$router.push({ name: val ? 'groups' : 'auth' })
 		}
 	}
 }

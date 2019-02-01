@@ -16,6 +16,8 @@
  *  }
  */
 
+// TODO Show form error (list)
+
 export default class ValidateForm {
 
 	/** @param {Object} form */
@@ -83,5 +85,16 @@ export default class ValidateForm {
 	/** @return {Boolean} */
 	get result() {
 		return this._result
+	}
+
+	/** @return {FormData} */
+	get formData() {
+		const fd = new FormData
+
+		Object.entries(this._form).map(([key, item]) => {
+			fd.set(key, item.value)
+		})
+
+		return fd
 	}
 }

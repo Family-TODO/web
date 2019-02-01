@@ -1,11 +1,11 @@
 'use strict'
 
+import '@babel/polyfill'
 import baseComponents from '@/components/base'
+import prototypes from '@/prototypes'
 import router from '@/router'
 import App from '@/App.vue'
 import store from '@/store'
-import 'babel-polyfill'
-import '@/config/axios'
 import Vue from 'vue'
 
 // Import styles
@@ -21,6 +21,15 @@ Vue.config.productionTip = false
  */
 baseComponents.forEach(component => {
 	Vue.component(component.name, component)
+})
+
+/**
+ * Install global prototypes
+ * @var {Array} prototypes
+ * @example Vue.$axios | this.$axios
+ */
+prototypes.forEach(prototype => {
+	Vue.use(prototype)
 })
 
 // Set user from localStorage

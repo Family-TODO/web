@@ -1,0 +1,68 @@
+.base-modal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, .1);
+  padding: 15px;
+}
+
+.base-modal__content {
+  flex: 1;
+  flex-basis: auto;
+  margin-bottom: 15px;
+  overflow-y: auto;
+}
+
+.base-modal__footer {
+  text-align: center;
+}
+
+// animation
+
+.base-modal-enter-active {
+  transition: .2s;
+  > .base-modal__content {
+    transition: .2s;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  > .base-modal__footer {
+    transition: .2s;
+    transform: scale(.5);
+  }
+}
+
+.base-modal-enter-to {
+  > .base-modal__content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  > .base-modal__footer {
+    transform: scale(1);
+  }
+}
+
+.base-modal-leave-active {
+  transition: 2s;
+  > .base-modal__content {
+    transition: .2s;
+  }
+  > .base-modal__footer {
+    transition: .2s;
+  }
+}
+
+.base-modal-leave-to {
+  > .base-modal__content {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  > .base-modal__footer {
+    transform: scale(.5);
+  }
+}
