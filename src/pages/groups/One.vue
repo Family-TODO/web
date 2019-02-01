@@ -11,17 +11,19 @@
 				v-if="group"
 				:group="group"
 			/>
+			<InputMessage />
 		</main>
 	</div>
 </template>
 
 <script>
+import InputMessage from '@/components/InputMessage'
 import Tasks from '@/components/tasks/Index'
 import TopBar from '@/components/TopBar'
 
 export default {
 	components: {
-		Tasks, TopBar
+		Tasks, TopBar, InputMessage
 	},
 	data() {
 		return {
@@ -64,3 +66,15 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+main {
+	display: flex;
+	flex-direction: column;
+}
+
+.tasks {
+	flex: 1;
+	flex-basis: auto;
+}
+</style>

@@ -2,18 +2,21 @@
 	<BaseModal
 		value
 		class="user-edit">
-		<h1>{{ data.login }}</h1>
-		<BaseForm @submit="onSubmit">
-			<BaseInput
-				v-model="form.name"
-				label="Name" />
-			<BaseCheckbox
-				v-model="form.is_admin"
-				v-if="currentUser.is_admin && currentUser.id !== data.id">
-				Admin
-			</BaseCheckbox>
-			<BaseButton>Save</BaseButton>
-		</BaseForm>
+		<span class="title">{{ data.login }}</span>
+		<div class="user-edit__basic">
+			<span class="subtitle">Basic</span>
+			<BaseForm @submit="onSubmit">
+				<BaseInput
+					v-model="form.name"
+					label="Name" />
+				<BaseCheckbox
+					v-model="form.is_admin"
+					v-if="currentUser.is_admin && currentUser.id !== data.id">
+					Admin
+				</BaseCheckbox>
+				<BaseButton>Save</BaseButton>
+			</BaseForm>
+		</div>
 	</BaseModal>
 </template>
 
@@ -69,6 +72,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.title {
+	display: block;
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.subtitle {
+	display: block;
+	font-size: 1rem;
+	font-weight: 600;
+	margin-bottom: 20px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
 .base-modal__content {
 	> h1 {
 		margin: 0 0 20px;
