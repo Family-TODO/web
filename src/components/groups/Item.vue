@@ -25,14 +25,16 @@
 							{{ lastTask.name }}
 						</BaseCheckbox>
 					</div>
-					<BaseIcon
-						v-if="group.creator_id === currentUser.id"
-						name="star"
-						class="color_yellow"
-					/>
-					<div class="group__footer-users">
-						<span>{{ group.users.length }}</span>
-						<BaseIcon name="people" />
+					<div class="group__footer-right">
+						<BaseIcon
+							v-if="group.creator_id === currentUser.id"
+							name="star"
+							class="color_yellow"
+						/>
+						<div class="group__footer-right__users">
+							<span>{{ group.users.length }}</span>
+							<BaseIcon name="people" />
+						</div>
 					</div>
 				</footer>
 			</router-link>
@@ -76,7 +78,7 @@ $colorSecondary: #c5c5c5;
 
 .group {
 	border-bottom: 1px solid rgba(0, 0, 0, .1);
-	font-size: .9rem;
+	font-size: .8em;
 	> a {
 		display: block;
 		padding: 10px 15px;
@@ -113,7 +115,7 @@ $colorSecondary: #c5c5c5;
 
 .group__header-time {
 	white-space: nowrap;
-	font-size: .6rem;
+	font-size: .6em;
 	color: $colorSecondary;
 }
 
@@ -125,23 +127,13 @@ $colorSecondary: #c5c5c5;
 	justify-content: flex-end;
 	margin-top: 8px;
 	color: $colorSecondary;
-	font-size: .7rem;
+	font-size: .8em;
 	> .base-checkbox {
-		font-size: .6rem;
+		font-size: .6em;
 		margin-left: 3px;
 	}
 	> .base-icon {
-		font-size: .6rem;
-	}
-}
-
-.group__footer-users {
-	display: flex;
-	align-items: center;
-	font-size: .6rem;
-	margin-left: 5px;
-	> .base-icon {
-		margin: 2px 0 0 2px;
+		font-size: .6em;
 	}
 }
 
@@ -153,5 +145,20 @@ $colorSecondary: #c5c5c5;
 	margin-right: 15px;
 	white-space: nowrap;
 	overflow: hidden;
+}
+
+.group__footer-right {
+	display: flex;
+	align-items: center;
+	font-size: .8em;
+}
+
+.group__footer-right__users {
+	display: flex;
+	align-items: center;
+	margin-left: 5px;
+	> i {
+		margin: 2px 0 0 2px;
+	}
 }
 </style>

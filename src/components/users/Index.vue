@@ -73,7 +73,7 @@ export default {
 	align-items: center;
 	justify-content: flex-end;
 	color: #c0c0c0;
-	font-size: .7rem;
+	font-size: .7em;
 	line-height: 1;
 	cursor: pointer;
 	> .base-icon {

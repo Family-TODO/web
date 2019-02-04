@@ -49,6 +49,7 @@ export default {
 		> span {
 			flex: 1;
 			flex-basis: auto;
+			font-size: .8em;
 		}
 	}
 }

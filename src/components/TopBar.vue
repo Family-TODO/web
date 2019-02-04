@@ -116,7 +116,7 @@ export default {
 	cursor: pointer;
 	user-select: none;
 	> i {
-		font-size: 18px;
+		font-size: 1.1em;
 	}
 }
 
@@ -131,7 +131,7 @@ export default {
 	will-change: transform;
 	> span {
 		font-weight: 600;
-		font-size: .9rem;
+		font-size: .9em;
 		letter-spacing: 1px;
 	}
 }

@@ -83,7 +83,7 @@ section {
 }
 
 .section-title {
-	font-size: .9rem;
+	font-size: .8em;
 	margin-bottom: 15px;
 }
 

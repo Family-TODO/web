@@ -74,7 +74,7 @@ export default {
 <style lang="scss" scoped>
 .title {
 	display: block;
-	font-size: 1.5rem;
+	font-size: 1.5em;
 	font-weight: bold;
 	text-align: center;
 	margin-bottom: 20px;
@@ -82,7 +82,7 @@ export default {
 
 .subtitle {
 	display: block;
-	font-size: 1rem;
+	font-size: 1em;
 	font-weight: 600;
 	margin-bottom: 20px;
 	padding-bottom: 5px;
@@ -93,7 +93,7 @@ export default {
 	> h1 {
 		margin: 0 0 20px;
 		text-align: center;
-		font-size: 1.3rem;
+		font-size: 1.3em;
 	}
 }
 </style>
