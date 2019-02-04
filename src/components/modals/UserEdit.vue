@@ -17,6 +17,13 @@
 				<BaseButton>Save</BaseButton>
 			</BaseForm>
 		</div>
+		<div class="user-edit__tokens">
+			<span class="subtitle">Tokens</span>
+			<!--TODO Tokens-->
+			<BaseGroup
+				left-icon="face"
+				right-icon="face">Test</BaseGroup>
+		</div>
 	</BaseModal>
 </template>
 
@@ -49,6 +56,7 @@ export default {
 			this.$axios.get('auth/tokens')
 				.then(res => {
 					this.tokens = res.data.tokens
+					console.log(this.tokens)
 				})
 		},
 		onSubmit() {
@@ -72,6 +80,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.base-modal__content {
+	> div {
+		margin-bottom: 20px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
 .title {
 	display: block;
 	font-size: 1.5em;
@@ -87,13 +104,5 @@ export default {
 	margin-bottom: 20px;
 	padding-bottom: 5px;
 	border-bottom: 1px solid rgba(0, 0, 0, .1);
-}
-
-.base-modal__content {
-	> h1 {
-		margin: 0 0 20px;
-		text-align: center;
-		font-size: 1.3em;
-	}
 }
 </style>

@@ -1,12 +1,24 @@
 .base-group {
   display: flex;
-  align-items: center;
+  align-items: stretch;
+}
+
+.base-group__content {
+  flex: 1;
+  flex-basis: auto;
 }
 
 .base-group__icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 25px;
-  margin-right: 15px;
+  min-width: 25px;
+}
+
+.base-group__icon_left {
+  margin-right: 10px;
+}
+
+.base-group__icon_right {
+  margin-left: 10px;
 }

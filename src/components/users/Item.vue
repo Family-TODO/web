@@ -4,7 +4,7 @@
 		appear
 	>
 		<BaseGroup
-			icon="face"
+			left-icon="face"
 			class="user"
 			@click="onClick"
 		>
