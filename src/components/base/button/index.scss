@@ -2,14 +2,22 @@
   outline: none;
   background: none;
   padding: 0;
-  height: 35px;
   background: rgba(0, 0, 0, .4);
   border: 0;
-  min-width: 150px;
   max-width: 400px;
   color: #fff;
   transition: .3s;
   cursor: pointer;
+}
+
+.base-button_size_small {
+  height: 30px;
+  min-width: 100px;
+}
+
+.base-button_size_medium {
+  height: 35px;
+  min-width: 150px;
 }
 
 .base-button_icon {

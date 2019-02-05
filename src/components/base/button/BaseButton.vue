@@ -1,6 +1,6 @@
 <template>
 	<button
-		:class="['base-button', {
+		:class="['base-button', `base-button_size_${size}`, {
 			'base-button_icon': icon,
 			'base-button_round': round,
 			'base-button_loading': loading
@@ -23,6 +23,11 @@ export default {
 	name: 'BaseButton',
 	inheritAttrs: false,
 	props: {
+		size: {
+			type: String,
+			default: 'medium',
+			validator: (val) => ~['small', 'medium'].indexOf(val)
+		},
 		icon: {
 			type: Boolean,
 			default: false
