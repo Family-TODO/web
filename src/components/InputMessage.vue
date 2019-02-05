@@ -27,7 +27,7 @@ export default {
 .message {
 	display: flex;
 	background: rgba(0, 0, 0, .3);
-	height: 40px;
+	height: 35px;
 
 	.base-button,
 	.base-input /deep/ input {
@@ -37,7 +37,7 @@ export default {
 	}
 
 	.base-button {
-		min-width: 50px;
+		min-width: 40px;
 		background: rgba(0, 0, 0, .5);
 	}
 

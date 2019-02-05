@@ -17,12 +17,20 @@
 				<BaseButton>Save</BaseButton>
 			</BaseForm>
 		</div>
-		<div class="user-edit__tokens">
+		<div
+			v-if="showTokens"
+			class="user-edit__tokens">
 			<span class="subtitle">Tokens</span>
-			<!--TODO Tokens-->
 			<BaseGroup
-				left-icon="face"
-				right-icon="face">Test</BaseGroup>
+				v-for="(token, index) in tokens"
+				:key="index"
+				class="token">
+				<div class="token__content">{{ token.token }}</div>
+				<div class="token__ip">{{ token.ip }}</div>
+			</BaseGroup>
+			<BaseButton
+				size="small"
+				@click="fetchClearTokens">Clear All</BaseButton>
 		</div>
 	</BaseModal>
 </template>
@@ -42,22 +50,29 @@ export default {
 		}
 	},
 	computed: {
+		showTokens() {
+			return !!this.tokens.length && this.canGetTokens
+		},
+		canGetTokens() {
+			return this.currentUser.isAdmin || this.currentUser.id === this.data.id
+		},
 		currentUser() {
 			return this.$store.state.profile.user
 		}
 	},
 	mounted() {
-		if (this.currentUser.id === this.data.id || this.currentUser.isAdmin) {
+		if (this.canGetTokens) {
 			this.fetchTokens()
 		}
 	},
 	methods: {
 		fetchTokens() {
 			this.$axios.get('auth/tokens')
-				.then(res => {
-					this.tokens = res.data.tokens
-					console.log(this.tokens)
-				})
+				.then(res => this.tokens = res.data.tokens)
+		},
+		fetchClearTokens() {
+			// TODO
+			// this.$axios.delete('')
 		},
 		onSubmit() {
 			// this.$axios.post(`users/${this.data.id}`)
@@ -104,5 +119,24 @@ export default {
 	margin-bottom: 20px;
 	padding-bottom: 5px;
 	border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.token {
+	margin-bottom: 15px;
+	/deep/ .base-group__content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+
+.token__content {
+	font-size: .8em;
+	margin-bottom: 4px;
+}
+
+.token__ip {
+	font-size: .7em;
+	color: #c5c5c5;
 }
 </style>
